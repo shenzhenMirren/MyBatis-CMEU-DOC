@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyBatis-CMEU使用说明</title>
+    <link href="resource/index.css" rel="stylesheet" type="text/css"/>
+    <script src="resource/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<!--头部-->
+<div class="header">
+    <div class="logos">
+        <h3>
+            <img src="resource/images/Logo.png" width="65" height="54">
+            <span class="logoName">MyBatis-CMEU</span>
+            <span class="about">QQ交流群:519714660</span>
+        </h3>
+    </div>
+</div><!--#头部结束#-->
+
+<!--主体内容-->
+<div class="contextBox">
+    <div class="context">
+        <!--功能导航-->
+        <div class="nav">
+            <ul>
+                <li class="navItem navAction" data-falg="infoItem1"><span class="arrow"></span>关于MyBatis-CMEU</li>
+                <li class="navItem" data-falg="infoItem2"><span class="arrow"></span>连接数据库/配置信息</li>
+                <li class="navItem" data-falg="infoItem3"><span class="arrow"></span>CMEU首页说明</li>
+                <li class="navItem" data-falg="infoItem4"><span class="arrow"></span>修改属性页说明</li>
+                <li class="navItem" data-falg="infoItem5"><span class="arrow"></span>添加属性页说明</li>
+                <li class="navItem" data-falg="infoItem6"><span class="arrow"></span>添加集合页说明</li>
+                <li class="navItem" data-falg="infoItem7"><span class="arrow"></span>添加主键策略说明</li>
+                <li class="navItem" data-falg="infoItem8"><span class="arrow"></span>dao/service接口说明</li>
+                <li class="navItem" data-falg="infoItem9"><span class="arrow"></span>Assist使用说明</li>
+                <li class="navItem" data-falg="infoItem10"><span class="arrow"></span>开源说明</li>
+            </ul>
+        </div>
+        <div class="docInfo">
+            <!--关于MyBatis-CMEU-->
+            <div class="infoItem1">
+                <p>
+                    MyBatis-CMEU全称为:MyBatis Config Mapper Entity Util<br/>
+                    简单来说MyBatis-CMEU是一款使用Javafx开发的MyBatis逆向工程帮助工具,该支持Oracle,Mysql,SqlServer,PostgreSql等数据库的生成,<br/>
+                    使用该工具你只需要连接数据库,选择你需要的表(CMEU2.0支持3表关联),点击执行创建,
+                    工具就会帮你生成实体类以及持久层(dao)接口/逻辑层(service)接口/逻辑层(serviceImpl)实现类/映射文件(Mapper)的增删改查;
+                    Assist类是专门为MyBatis-CMEU设计的帮助类,该类可以无SQL注入的实现动态查询,排序,去重等操作;
+                    当数据需要分页时通过Assist只需设置两个参数便可以实现分页;<br/>
+                    关于MyBatis-CMEU运行要求,运行时文件存放路径不能存在中文;CMEU窗体基于javafx8,语法使用大部分java8特性运行环境要求JDK1.8<br/>
+                    交流群里提供Windows/Linux/Mac免JDK版(以将JDK打包在程序中)<br/>
+                </p>
+                <div class="center">
+                    <img src="resource/images/1.png" alt="index" width="890">
+                </div>
+                <div class="line"></div>
+            </div>
+            <div class="infoItem2">
+                <h1 class="lineHeight center">新建数据库连接</h1>
+                <div class="center">
+                    <img src="resource/images/2.png" alt="connection" width="616">
+                </div>
+                <h3>连接名称:</h3>
+                <p class="indent">连接名称用于保存当前连接,名字用户自定义,当保存后将会显示在首页左侧树形菜单</p>
+                <h3>主机名/Ip地址:</h3>
+                <p class="indent">主机名/Ip地址指定数据库的地址,比如本机的localhost或者127.0.0.1</p>
+                <h3>端口号:</h3>
+                <p class="indent">端口号为数据库的端口号比如oracle:1521</p>
+                <h3>数据库类型:</h3>
+                <p class="indent">CMEU目前支持4种数据库,通过下拉框选择相应的数据库,比如:选择Oracle</p>
+                <h3>数据库:</h3>
+                <p class="indent">数据库为你所要连接的数据库名称,比如:连接的数据库名叫orcl,那么则填写orcl便可</p>
+                <h3>用户:</h3>
+                <p class="indent">数据库连接的用户名:比如:scott</p>
+                <h3>密码:</h3>
+                <p class="indent">数据库连接的密码:比如:tiger</p>
+                <h3>编码格式:</h3>
+                <p class="indent">编码格式:如果数据库有编码格式要求则下拉选择,如果数据库没有要求编码格式则不需要理会</p>
+                <h3>完成添加连接:</h3>
+                <p class="indent">
+                    当所有选项填写完毕后,点击测试连接;如果连接成功便会提示连接成功,如果连接失败有可能是因为数据库架包不兼容,
+                    或者是数据库服务没有打开,失败系统会给出相应的提示;如果是架包不兼容可以往下查看注意事项;<br/>
+                    如果连接成功,便可以选择保存连接完成数据库;
+                </p>
+                <span class="redColor">
+                    <h2>注意事项:</h2>
+                </span>
+                <h3>关于数据库驱动架包</h3>
+                <p>
+                    系统默认集成的版本分别是:<br/>
+                    Oracle=Oracle6.jar<br/>
+                    SqlServer=sqljdbc2008.jar<br/>
+                    MySql=mysql-connector-java-5.1.38.jar<br/>
+                    PostgreSql=postgresql-9.4.1209.jar<br/>
+                    如果跟你的版本不一致可以到libs里面将架包改成你的架包,但是命名规则为:数据库小写JBDC大写<br/>
+                    示例:sqlserverJDBC.jar<br/>
+                </p>
+                <div class="center">
+                    <img src="resource/images/jdbcDriver.png" alt="驱动示例图:" width="628">
+                </div>
+                <div class="line"></div>
+                <h1 class="lineHeight center">
+                    配置信息
+                </h1>
+                <div class="center">
+                    <img src="resource/images/3.png" alt="配置信息" width="526">
+                </div>
+                <h3>新增配置信息</h3>
+                <p class="indent">
+                    配置信息用于保存首页的相关配置,比如包名,文件资源路径等,通过首页的保存配置按钮新建配置信息;<br/>
+                    <span class="redColor indent">系统启动时如果配置信息中存在名为default的配置文件,系统将默认加载default配置信息,所以如果是常用的配置信息可以采用default命名</span>
+                </p>
+                <h3>加载配置信息</h3>
+                <p class="indent">
+                    可以通过配置信息->操作->加载配置;将已经保存的信息重新加载到首页;
+                </p>
+                <h3>删除配置信息</h3>
+                <p class="indent">
+                    可以通过配置信息->操作->删除配置;确定便可;
+                </p>
+            </div>
+            <div class="infoItem3">
+                <div class="line"></div>
+                <h1 class="lineHeight center">首页使用说明</h1>
+                <div class="center">
+                    <img src="resource/images/1.png" alt="首页" width="890">
+                </div>
+                <h3>数据库列表</h3>
+                <p class="indent">
+                    当添加数据库连接后,可以双击显示数据库中所以的表,也可以用过右键打开/关闭/删除现有的数据库连接;
+                </p>
+                <p class="indent">
+                    通过双击选择所要创建的表名将表的信息加载至右侧数据面板;
+                </p>
+                <h2 class="lineHeight">数据面板说明</h2>
+                <div>
+                <h3>项目所在目录:</h3>
+                <p class="indent">输入或者通过按钮选择项目的目录 <span class="redColor">(也就是路径+项目名称)</span>;</p>
+                <h3>更新mapper资源路径: </h3>
+                <p class="indent">如果已经存在MyBatis配置文件,可以输入或者通过按钮选择MyBatis配置文件所在路径,系统将自动将你新建的映射文件自动更新到mappers中;<br/>
+                    如果不存在配置文件,可以使用勾选创建配置文件;
+                </p>
+                <h2>选择框相关:</h2>
+                <p class="indent">
+                    系统多大部分选择框相关的都有tooltip提示说明:将鼠标悬停在其上后便会做出相应的提示;
+                </p>
+                <div class="center">
+                    <img src="resource/images/tooltip.png" alt="工具提示" width="487">
+                </div>
+                <h3>创建service:</h3>
+                <p class="indent">
+                    当选择创建service时系统将会生成相对应的service接口以及serviceImpl实现类;<br/>
+                    <span class="redColor">注意事项:生成的serviceImpl中dao并没有赋值,只是单纯的声明了dao具体实现根据自己的需要配置,比如Spring注入或者通过MyBatisUtil获得dao的实现;</span>
+                </p>
+                <h3>创建查询工具:</h3>
+                <p class="indent">
+                    创建查询工具Assist,<span class="redColor">推荐创建,因为有它,能很多事情都会变得超级方便;</span>
+                </p>
+                <h3>创建配置文件:</h3>
+                <p class="indent">
+                    创建MyBatis的主配置文件,系统会自动根据你连接的数据库类型生成一个默认的environments连接以及创建mapper的资源路径;
+                </p>
+                <h3>创建帮助工具:</h3>
+                <p class="indent">
+                    创建MyBatis的帮助工具,用于获取sqlsession,如果你已经创建了MyBatis配置文件,帮助工具将自动帮你读取配置文件,你可以通过它获得sqlSession等;
+                </p>
+                 <h3>保存配置:</h3>
+                    <p class="indent">
+                        用于将数据面板的数据保存到配置中心,<span class="redColor">注意事项:配置名称不能重复;如果有重复请先删除原来的配置</span>
+                    </p>
+                    <h3>修改属性:</h3>
+                    <p class="indent">
+                        点击修改属性进入属性页面,你可以更改类的属性信息,比如数据类型,添加新的属性,集合,子表,主键策略...等等的操作;
+                    </p>
+                    <h3>执行创建:</h3>
+                    <p class="indent">
+                        执行创建将完成所有数据面板上的所有类/dao/service的生成;<span class="redColor">注意事项:项目所在目录以及表名不能为空;</span>
+                    </p>
+                </div>
+            </div>
+            <div class="infoItem4">
+                <div class="line"></div>
+                <div class="center">
+                    <h1 class="lineHeight">修改属性页面说明</h1>
+                    <img src="resource/images/4.png" alt="修改属性" width="890">
+                </div>
+                <p class="indent">
+                    与首页一样大部分选择框鼠标悬浮在其上都会显示tooltip提示;
+                </p>
+                <h2>选择框相关说明:</h2>
+                <h3></h3>
+            </div>
+            <div class="infoItem5" style="height: 500px">5</div>
+            <div class="infoItem6" style="height: 500px">6</div>
+            <div class="infoItem7" style="height: 500px">7</div>
+            <div class="infoItem8" style="height: 500px">8</div>
+            <div class="infoItem9" style="height: 500px">9</div>
+            <div class="infoItem10" style="height: 500px">9</div>
+            <div style="height: 300px;width: 100%"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //点击事件
+    $(".arrow").hide();
+    $(".arrow:first").show();
+    $(".navItem").click(function () {
+        navAction($(this));
+        var index = $("." + $(this).attr("data-falg")).offset().top;
+        var curIndex = $(document).scrollTop();
+        $("html,body").animate({scrollTop: index - 70}, 0);
+
+    });
+    function navAction(nav) {
+        $(".arrow").hide();
+        $(".navItem").removeClass("navAction");
+        nav.find(".arrow").show();
+        nav.addClass("navAction");
+    }
+    //滚轮事件
+    var scrollN = 0;
+    var infoTop1 = ($(".infoItem1").offset().top);
+    var infoTop2 = ($(".infoItem2").offset().top);
+    var infoTop3 = ($(".infoItem3").offset().top);
+    var infoTop4 = ($(".infoItem4").offset().top);
+    var infoTop5 = ($(".infoItem5").offset().top);
+    var infoTop6 = ($(".infoItem6").offset().top);
+    var infoTop7 = ($(".infoItem7").offset().top);
+    var infoTop8 = ($(".infoItem8").offset().top);
+    var infoTop9 = ($(".infoItem9").offset().top);
+    var infoTop10 = ($(".infoItem10").offset().top);
+
+    $(window).scroll(function () {
+        scrollN = $(document).scrollTop();
+        scrollN += 80;
+        if (scrollN >= infoTop10) {
+            navAction($(".navItem:eq(9)"));
+        } else if (scrollN >= infoTop9) {
+            navAction($(".navItem:eq(8)"));
+        }else if (scrollN >= infoTop8) {
+            navAction($(".navItem:eq(7)"));
+        } else if (scrollN >= infoTop7) {
+            navAction($(".navItem:eq(6)"));
+        } else if (scrollN >= infoTop6) {
+            navAction($(".navItem:eq(5)"));
+        } else if (scrollN >= infoTop5) {
+            navAction($(".navItem:eq(4)"));
+        } else if (scrollN >= infoTop4) {
+            navAction($(".navItem:eq(3)"));
+        } else if (scrollN >= infoTop3) {
+            navAction($(".navItem:eq(2)"));
+        } else if (scrollN >= infoTop2) {
+            navAction($(".navItem:eq(1)"));
+        } else if (scrollN >= infoTop1) {
+            navAction($(".navItem:eq(0)"));
+        }
+    });
+    //设置交流群颜色
+    var aboutStyle = 1;
+    setInterval(function () {
+        if (aboutStyle == 1) {
+            $(".about").css("color", "#000f99");
+            $(".about").css("transition", "color 1s");
+        }
+        ;
+        if (aboutStyle == 2) {
+            $(".about").css("color", "#1C98FF");
+            $(".about").css("transition", "color 1s");
+        }
+        ;
+        if (aboutStyle == 3) {
+            $(".about").css("color", "#7b3299");
+            $(".about").css("transition", "color 1s");
+        }
+        ;
+        if (aboutStyle == 4) {
+            $(".about").css("color", "#990099");
+            $(".about").css("transition", "color 1s");
+        }
+        ;
+        if (aboutStyle == 5) {
+            $(".about").css("color", "#FF1493");
+            $(".about").css("transition", "color 1s");
+        }
+        ;
+        if (aboutStyle == 6) {
+            $(".about").css("color", "#0065cc");
+            $(".about").css("transition", "color 1s");
+        }
+        ;
+        if (aboutStyle == 7) {
+            $(".about").css("color", "#990099");
+            $(".about").css("transition", "color 1s");
+        }
+        ;
+        aboutStyle++;
+        if (aboutStyle == 8) {
+            aboutStyle = 1;
+        }
+        ;
+    }, 1500);
+
+
+</script>
+</body>
+</html>

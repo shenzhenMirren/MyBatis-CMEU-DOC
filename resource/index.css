@@ -1,0 +1,115 @@
+/*通用样式*/
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+ }
+
+.navAction{
+    border-left: 15px solid #1c98ff !important;
+}
+.indent{
+    text-indent: 35px;
+}
+.line{
+    margin: 20px 0px;
+    width:100%;
+    border-bottom:2px solid black;
+}
+.redColor{
+    color: red;
+}
+
+.lineHeight{
+    line-height: 60px;
+}
+.center{
+    text-align: center;
+}
+/*头部样式*/
+.header{
+    width:100%;
+    height: 60px;
+    background-color: #EAEBEA;
+    position:fixed;
+    z-index: 9;
+    color: white;
+}
+.logos{
+    height: 100%;
+    width: 600px;
+    margin: 0px auto;
+    text-align: center;
+}
+.logos img{
+    margin-top: 3px;
+}
+.logos .logoName{
+    position: relative;
+    top: -10px;
+    color: #1C98FF;
+    font-size: 30px;
+    font-weight:bold;
+}
+.logos .about{
+    position: relative;
+    top: -10px;
+    font-weight:bold;
+    color: #990099;
+}
+
+/*主体样式*/
+.contextBox{
+    padding-top: 70px;
+    width:100%;
+    /*height: 12000px;*/
+}
+.context{
+    width: 90%;
+    height:500px;
+    margin:0px auto;
+    position: relative;
+}
+.nav{
+    position: absolute;
+    width: 23%;
+    height: 500px;
+}
+.docInfo{
+    position: absolute;
+    width:77%;
+    height: 500px;
+    left: 23%;
+    font-size: 16px;
+}
+.nav ul{
+    position: fixed;
+    list-style-type:none;
+    width:20%;
+}
+.nav ul li{
+    margin-bottom: 10px;
+    padding: 10px 10px 10px 0px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #1c98ff;
+    font-weight:bold;
+    color: #1c98ff;
+}
+.nav ul li:hover{
+    border: 1px solid #1c98ff;
+    border-left:15px solid #1c98ff;
+    transition: border .3s;
+}
+.arrow{
+    float: left;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 18px solid #1c98ff;
+    margin-top: -4px;
+}
