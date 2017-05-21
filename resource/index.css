@@ -28,6 +28,37 @@
 .center{
     text-align: center;
 }
+.isCode{
+    font-size: 18px;
+    line-height:30px;
+    background-color: #f3f5f7;
+    padding-left: 20px;
+    padding-top:20px;
+    padding-bottom:20px;
+    font-family: "Microsoft YaHei";
+    margin-bottom: 20px;
+}
+.annotation{
+    color: #008000;
+}
+.variable{
+    color: #ff1038;
+}
+.ref{
+    color: #ff9124;
+}
+.param{
+    color: #646464;
+}
+.value{
+    color: #2A00FF;
+}
+.oneTag{
+    margin-left: 40px;
+}
+.twoTag{
+    margin-left: 80px;
+}
 /*头部样式*/
 .header{
     width:100%;
@@ -83,6 +114,15 @@
     height: 500px;
     left: 23%;
     font-size: 16px;
+}
+.docInfo ol{
+    padding-left: 20px;
+}
+.docInfo ol li{
+    margin:5px 0px;
+}
+.docInfo h3{
+    margin-top: 20px;
 }
 .nav ul{
     position: fixed;

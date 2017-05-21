@@ -28,11 +28,10 @@
                 <li class="navItem" data-falg="infoItem2"><span class="arrow"></span>连接数据库/配置信息</li>
                 <li class="navItem" data-falg="infoItem3"><span class="arrow"></span>CMEU首页说明</li>
                 <li class="navItem" data-falg="infoItem4"><span class="arrow"></span>修改属性页说明</li>
-                <li class="navItem" data-falg="infoItem5"><span class="arrow"></span>添加第二级新表说明</li>
-                <li class="navItem" data-falg="infoItem6"><span class="arrow"></span>添加第三级新表说明</li>
-                <li class="navItem" data-falg="infoItem7"><span class="arrow"></span>dao/service接口说明</li>
-                <li class="navItem" data-falg="infoItem8"><span class="arrow"></span>Assist使用说明</li>
-                <li class="navItem" data-falg="infoItem9"><span class="arrow"></span>开源说明</li>
+                <li class="navItem" data-falg="infoItem5"><span class="arrow"></span>添加第二/三级新表说明</li>
+                <li class="navItem" data-falg="infoItem6"><span class="arrow"></span>dao/service接口说明</li>
+                <li class="navItem" data-falg="infoItem7"><span class="arrow"></span>Assist使用说明</li>
+                <li class="navItem" data-falg="infoItem8"><span class="arrow"></span>开源说明</li>
             </ul>
         </div>
         <div class="docInfo">
@@ -46,8 +45,21 @@
                     Assist类是专门为MyBatis-CMEU设计的帮助类,该类可以无SQL注入的实现动态查询,排序,去重等操作;
                     当数据需要分页时通过Assist只需设置两个参数便可以实现分页;<br/>
                     关于MyBatis-CMEU运行要求,运行时文件存放路径不能存在中文;CMEU窗体基于javafx8,语法使用大部分java8特性运行环境要求JDK1.8<br/>
-                    交流群里提供Windows/Linux/Mac免JDK版(以将JDK打包在程序中)<br/>
+                    QQ交流群里提供Windows/Linux/Mac免JDK版(以将JDK打包在程序中),群号:519714660<br/>
                 </p>
+                <h3>基本常用功能预览:</h3>
+                <ol>
+                    <li>生成实体类(可以自定义：get/set,有参无参构造方法,自定义类型与属性,序列化等);</li>
+                    <li>生成dao层接口(查询全部信息，通过ID查询信息,插入全部属性,插入不为空的属性,通过ID更新全部属性,通过ID更新不为空的属性,通过Assist更新全部属性,通过Assist更新不为空的属性,通过ID删除信息,通过Assist删除信息);</li>
+                    <li>生成Mapper映射文件(dao层接口SQL语句,支持生成3表关联(比如：A表关联B表,B表关联C表,一次便可获得3张表的数据),支持主键策略;&lt;如果选择创建Assist支持分页,去重,排序,无注入动态查询等&gt;);</li>
+                    <li>生成service层接口(与dao接口一致)可选项;</li>
+                    <li>生成service层实现类(实现service层接口)可选项;</li>
+                    <li>生成查询工具Assist(Assist为CMEU特别定制的查询工具,使用该工具一切操作都变得超简单,比如：分页通过Assist只需要设置2个参数就可以实现比如参数1=10,参数2=5,查询出来就是第十行到15行的数据,同时也可以防注入动态添加查询添加,去重,排序,自定义返回列等)可选项;</li>
+                    <li>生成mybatis配置文件(mybatis的主配置文件,系统会自动识别使用的数据库，并创建其连接,同时更新mapper映射文件的资源路径)可选项;</li>
+                    <li>生成mybatisUtil(用于获得SqlSession等操作,当与mybatis配置文件一同创建时系统会自动识别配置文件路径并设置)可选项;</li>
+                    <li>更新现有配置文件的mapper映射文件的资源路径(当生成新的信息时自动更新mybatis配置文件的Mapper映射资源路径)可选项;</li>
+                </ol>
+                <h3>程序主界面:</h3>
                 <div class="center">
                     <img src="resource/images/1.png" alt="index" width="890">
                 </div>
@@ -93,9 +105,7 @@
                     如果跟你的版本不一致可以到libs里面将架包改成你的架包,但是命名规则为:数据库小写JBDC大写<br/>
                     示例:sqlserverJDBC.jar<br/>
                 </p>
-                <div class="center">
                     <img src="resource/images/jdbcDriver.png" alt="驱动示例图:" width="628">
-                </div>
                 <div class="line"></div>
                 <h1 class="lineHeight center">
                     配置信息
@@ -201,9 +211,7 @@
                     类型输入你要创建属性的类型;名称输入你要创建的属性名称;点击->添加 便会将属性添加到类中;
                 </p>
                 <h3>生成主键策略说明:</h3>
-                <div class="center">
                     <img src="resource/images/selectKey.png" alt="主键策略" width="403">
-                </div>
                 <p class="indent">
                     选择生成主键策略后系统会根据你的数据库类型为你生成基础的模板,这个时候你需要补充输入框中缺乏的信息,比如上图的示例中为Oracle的主键策略,但是还缺少了序列的名称,这个时候你需要将序列名补充上;
                 </p>
@@ -223,18 +231,196 @@
                     <h1 class="lineHeight">添加第二级新表说明</h1>
                     <img src="resource/images/5.png" alt="添加第二级新表界面" width="890">
                 </div>
+                    <p class="indent">
+                        在修改属性页中点击添加表作为属性/添加表作为集合打开本窗体后,如上图所显示;<br/>
+                        左侧与修改属性页基本一致的功能,只是多了一个数据库表的列表,
+                        双击选择左侧列表中的表将其加载至属性表格中,如果类型不合适可以自己修改;
+                    </p>
+                    <h3>全部生成:</h3>
+                    <p class="indent">全部生成只是一个勾选的功能,当你点击全部生成后,生成实体类/dao/service...等都会跟着该选择框一起变化</p>
+                    <h3>类/接口/映射文件的创建:</h3>
+                    <p class="indent">
+                        当需要生成实体类或者service等等的可以勾选相应的选择框,不勾选就不创建生成,如果文件已经存在会覆盖原文件,文件包名将以首页的相应包名为该文件的包名;
+                    </p>
+                    <h3>生成主键策略:</h3>
+                    <p class="indent">主键策略与修改属性页面一致,选择主键策略补充缺乏的信息便可</p>
+                    <h3>添加表作为表的一个属性/集合说明:</h3>
+                    <p class="indent">
+                        点击添加表作为属性/集合时将会打开第三个窗口,选择新的窗口,新窗口与当前基本一致界面如下图,只是第三个窗口不能再继续添加属性或者集合;
+                    </p>
+                    <div class="center">
+                        <img src="resource/images/6.png" alt="第三级窗体图片" width="890">
+                    </div>
             </div>
-            <div class="infoItem6" style="height: 500px">
+            <div class="infoItem6">
                 <div class="line"></div>
                 <div class="center">
-                    <h1 class="lineHeight">添加第三级级新表说明</h1>
-                    <img src="resource/images/6.png" alt="添加第三级新表界面" width="890">
+                    <h1 class="lineHeight">dao/service接口说明</h1>
+                </div>
+                <p class="isCode">
+                    <span class="annotation">//-----------------拥有Assist帮助类接口--------------------</span><br/>
+                    <span class="variable">long</span> get类名RowCount(Assist assist);<br/>
+                    List&lt;类型&gt; select类名(Assist assist);<br/>
+                    List&lt;类型&gt; select类名OfPaging(Assist assist);<br/>
+                    类型 select类名ById(Integer id);<br/>
+                    <span class="variable">int</span> insert类名(类型 value);<br/>
+                    <span class="variable">int</span> insertNonEmpty类名(类型 value);<br/>
+                    <span class="variable">int</span> delete类名ById(主键类型 id);<br/>
+                    <span class="variable">int</span> delete类名(Assist assist);<br/>
+                    <span class="variable">int</span> update类名ById(类型 enti);<br/>
+                    <span class="variable">int</span> updateNonEmpty类名ById(类型 enti);<br/>
+                    <span class="variable">int</span> update类名(<span class="param">@Param</span>(<span class="value">"enti") </span>类型 value, <span class="param">@Param</span>(<span class="value">"assist"</span>) Assist assist);<br/>
+                    <span class="variable">int</span> updateNonEmpty类名(<span class="param">@Param</span>(<span class="value">"enti") </span>类型 value, <span class="param">@Param</span>(<span class="value">"assist"</span>) Assist assist);<br/>
+                    <span class="annotation">//-----------------没有Assist帮助类接口--------------------</span><br/>
+                    <span class="variable">long</span> get类名RowCount();<br/>
+                    List&lt;类型&gt; select类名();<br/>
+                    类型 select类名ById(Integer id);<br/>
+                    <span class="variable">int</span> insert类名(类型 value);<br/>
+                    <span class="variable">int</span> insertNonEmpty类名(类型 value);<br/>
+                    <span class="variable">int</span> delete类名ById(主键类型 id);<br/>
+                    <span class="variable">int</span> update类名ById(类型 enti);<br/>
+                    <span class="variable">int</span> updateNonEmpty类名ById(类型 enti);<br/>
+                </p>
+
+                <h3> <span class="variable">long</span> get类名RowCount(Assist assist);</h3>
+                <p class="indent">
+                    该方法用于获得查询数据总行数,返回类型为long类型,当没有生成Assist时为无参方法,当有Assist帮助类时参数为Assist为帮助类,如果你需要设置条件那么就创建一个Assist传入,如果没有条件那么直接就传null便可;关于Assist如何使用请看下一节Assist使用说明;
+                </p>
+                <h3>
+                    List&lt;类型&gt; select类名(Assist assist);<br/>
+                </h3>
+                <p class="indent">
+                    该方法用于获取所有数据,返回类型为List&lt;类型&gt; ,当没有生成Assist时为无参方法,当有Assist帮助类时参数为Assist为帮助类,如果你需要设置条件那么就创建一个Assist传入,如果没有参数那么直接就传null便可;关于Assist如何使用请看下一节Assist使用说明;
+                </p>
+                <h3>
+                    List&lt;类型&gt; select类名OfPaging(Assist assist);<br/>
+                </h3>
+                <p class="indent">
+                    <span class="redColor">
+                      该方法为特别的方法,也是Assist特有的方法,并不是每个接口都会生成该方法,只有当你生成的类中存在集合时,系统才会生成该方法,该方法主要用于分页是使用,
+                        由于MyBatis的sql映射机制,如果采用结果映射,那么分页获取出来的数据,在类中集合(子表类)就会缺少数据,所以只能使用嵌套查询,该方法其SQL语句采用的就是嵌套映射,每查一次主表就去查一次子表;
+                        所以使用中如果需要获取带有集合属性的类且需要分页就采用该方法,如果获取全部信息的话直接使用不带OfPaging的查询方法便可以了,因为效率比该方法高;<br/>
+                    </span>
+                    该方法用于获取所有数据(分页不缺少数据),返回类型为List&lt;类型&gt; ,参数为Assist为帮助类,如果你需要设置条件那么就创建一个Assist传入,如果没有参数那么直接就传null便可;关于Assist如何使用请看下一节Assist使用说明;
+                </p>
+                <h3>
+                    类型 select类名ById(主键类型 id);<br/>
+                </h3>
+                <p class="indent">
+                    该方法用于通过主键编号获取数据,返回的类型为实体类的类型,参数为类型主键列对应属性的类型;生成时系统会自动识别主键的数据类型,如果识别有误可以自己手动修改主键的类型;
+                </p>
+                <h3>
+                    <span class="variable">int</span> insert类名(类型 value);<br/>
+                </h3>
+                <p class="indent">
+                    该方法用于将实体类中的全部数据持久化到数据库,返回受影响的行数类型为int类型,参数为实体类的类型;
+                </p>
+                <h3>
+                    <span class="variable">int</span> insertNonEmpty类名(类型 value);<br/>
+                </h3>
+                <p class="indent">
+                    该方法用于将实体类中值不为null的数据持久化到数据库,返回受影响的行数类型为int类型,SQL语句会自动回将不会null的数据进行插入;
+                </p>
+                <h3>
+                    <span class="variable">int</span> delete类名ById(主键类型 id);<br/>
+                </h3>
+                <p class="indent">
+                    该方法为用于通过主键列对应的属性,删除数据库中对应的数据,返回受影响的行数类型为int类型,参数为主键列对应属性的类型,系统在生成时会自动识别主键列对应的java数据类型,如果识别有误请自己手动修改;
+                </p>
+                <h3>
+                    <span class="variable">int</span> delete类名(Assist assist);<br/>
+                </h3>
+                <p class="indent">
+                    该方法用于删除数据库中条件满足Assist帮助类所设置条件的数据,,返回受影响的行数类型为int类型,该方法为Assist特有的方法,参数为Assist为帮助类,关于Assist如何使用请看下一节Assist使用说明;
+                </p>
+                <h3>
+                    <span class="variable">int</span> update类名ById(类型 enti);<br/>
+                </h3>
+                <p class="indent">
+                    该方法用于通过主键更新实体类中的全部的属性(包括值为null的属性)到数据库,返回受影响的行数类型为int类型,参数为对应的实体类;
+                </p>
+                <h3>
+                    <span class="variable">int</span> updateNonEmpty类名ById(类型 enti);<br/>
+                </h3>
+                <p class="indent">
+                    该方法用于通过主键更新实体类中值不为null的属性到数据库,返回受影响的行数类型为int类型,参数为对应的实体类;
+                </p>
+                <h3>
+                    <span class="variable">int</span> update类名(<span class="param">@Param</span>(<span class="value">"enti") </span>类型 value, <span class="param">@Param</span>(<span class="value">"assist"</span>) Assist assist);<br/>
+                </h3>
+                <p class="indent">
+                    该方法为Assist帮助类特有的方法,用于将实体类中的全部的属性(包括值为null)更新到符合Assist条件的表中,返回受影响的行数类型为int类型,参数1 enti为对应的实体类,参数2 为Assist类;
+                </p>
+                <h3>
+                    <span class="variable">int</span> updateNonEmpty类名(<span class="param">@Param</span>(<span class="value">"enti") </span>类型 value, <span class="param">@Param</span>(<span class="value">"assist"</span>) Assist assist);<br/>
+                </h3>
+                <p class="indent">
+                    该方法为Assist帮助类特有的方法,用于将实体类中值不为null的属性更新到符合Assist条件的表中,返回受影响的行数类型为int类型,参数1 enti为对应的实体类,参数2 为Assist类;
+                </p>
+
+            </div>
+            <div class="infoItem7">
+                <div class="line"></div>
+                <div class="center">
+                    <h1 class="lineHeight">Assist使用说明</h1>
+                    <img src="resource/images/assist.png" alt="assist图片" width="657">
+                </div>
+                <h3>distinct去重说明:</h3>
+                <p class="indent">distinct为是否去除重复的数据,当需要去重时调用Assist对象的setDistinct(boolean)方法;true为去重,不去重则不需要理会</p>
+                <h3>order排序说明:</h3>
+                <p class="indent">order为对数据进行排序,当需要排序时调用Assist对象的setOrder(String column, boolean mode)方法;column参数为要排序的列名,mode参数 true 为正序排序,false为倒序排序</p>
+                <h3>startRow/rowSize--->分页说明:</h3>
+                <p class="indent">
+                    startRow:从第几行开始取数据;
+                </p>
+                <p class="indent">
+                    rowSize:每次取多少行数据;
+                </p>
+                <h3 class="redColor">实现分页示例代码:</h3>
+                <div class="isCode">
+                    DuhuaDao <span class="ref">dao</span>=MyBatisUtil.getSession().getMapper(DuhuaDao.<span class="variable">class</span>);<br/>
+                    Assist <span class="ref">assist</span>=<span class="variable">new</span> Assist();<br/>
+                    <span class="ref">assist</span>.setStartRow(10);<br/>
+                    <span class="ref">assist</span>.setRowSize(5);<br/>
+                    <span class="ref">dao</span>.selectDuhua(assist);<br/>
+                </div>
+                <p class="indent">
+                    以上示例分页中,分别是获得dao接口,创建一个Assist对象,设置从第10行开始取数据,取5行数据->执行,取出来的数据就是第10行到第15行的数据;
+                </p>
+                <h3>resultColumn自定义列说明:</h3>
+                <p class="indent">
+                    resultColumn为自定义返回的列,比如表中有5列,你只想取出2列,这个时候你就可以调用Assist对象的setResultColumn(String resultColumn)方法,
+                    参数为想要取出的列,多个列用逗号,分开;比如要取出id跟名字参数值就为===>"id as 类名0 , name as 类名1";<br/>
+                    <span class="redColor">特别需要注意的事项:想必你看到as 类名0跟类名1有点疑惑为什么这样做吧,起别名为了防止别名太长导致报错,所以采用别名的方式:
+                    所以当自定义返回列的时候必须起一个别名,别名也是有规则,以mapper映射文件中的resultMap中的column名称为主;
+                    别名的规律是类名+属性的顺序;比如:public class Test(){ ...id... ...name...;id距离类名中间0个属性,那么就是Test0,name距离类名有1个参数那么别名就是Test1;<br/>
+                    简单一句话:自定义返回列名时需要给列起一个别名,别名的必须与mapper中resultMap节点对应的属性一致;</span>
+                </p>
+                <h3>require条件集说明:</h3>
+                <p class="indent">
+                    require属性为条件集,当查询的时需要条件,就可以调用Assist对象的setRequires(whereRequire... require)方法,参数whereRequire类型是Assist的内部条件类,参数个数无限,可以直接使用Assist的静态条件方法传入条件;有以下静态条件方法:<br/>
+                    <img src="resource/images/ststicFun.png" alt="Assist静态方法" width="309"><br/>
+                    静态条件方法使用为:Assist.xxx_xxx("表名.列名","值");当只操作一张表或者没有重复列名的时候可以只写列名,
+                    当然如果静态条件方法不满足你也可以新建一个对象传入;
+                </p>
+                <h3 class="redColor">综合使用案例:</h3>
+                <div class="center">
+                    <img src="resource/images/case.png" alt="使用案例图片" width="890">
                 </div>
             </div>
-            <div class="infoItem7" style="height: 500px">7</div>
-            <div class="infoItem8" style="height: 500px">8</div>
-            <div class="infoItem9" style="height: 500px">9</div>
-            <div style="height: 300px;width: 100%"></div>
+            <div class="infoItem8">
+                <div class="line"></div>
+                <div class="center">
+                    <h1 class="lineHeight">开源以及部分素材的来源说明</h1>
+                </div>
+                <ol>
+                    <li>本软件开源于github:<a href="https://github.com/shenzhenMirren/MyBatis-CMEU" target="_blank">https://github.com/shenzhenMirren/MyBatis-CMEU</a>, 本软件允许任何人做修改发布,但是希望也是免费提别人使用,同时希望留下QQ交流群号,以便于大家交流以及改进软件,同时留下QQ交流群也表示对作者以及软件的尊重;毕竟作者花费了很多心血才完成该软件;作者开发本软件的出发点就是让每个开发人员更轻松的完成开发;</li>
+                    <li>本软件的icon蓝领带小鸟修改来自百度搜索出来的图片;</li>
+                    <li>本软件的界面图标数据库连接,配置信息,数据库,表的图标取自mybatis-generator-gui:群号为:613911142</li>
+                    <li>本软件作者Email为:690389491@qq.com,使用过程软件出现问题或者有好的建议可以发Email给我;</li>
+                </ol>
+            </div>
+            <div style="height: 400px;width: 100%"></div>
         </div>
     </div>
 </div>
@@ -265,14 +451,11 @@
     var infoTop6 = ($(".infoItem6").offset().top);
     var infoTop7 = ($(".infoItem7").offset().top);
     var infoTop8 = ($(".infoItem8").offset().top);
-    var infoTop9 = ($(".infoItem9").offset().top);
 
     $(window).scroll(function () {
         scrollN = $(document).scrollTop();
         scrollN += 80;
-        if (scrollN >= infoTop9) {
-            navAction($(".navItem:eq(8)"));
-        }else if (scrollN >= infoTop8) {
+        if (scrollN >= infoTop8) {
             navAction($(".navItem:eq(7)"));
         } else if (scrollN >= infoTop7) {
             navAction($(".navItem:eq(6)"));
