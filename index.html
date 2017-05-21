@@ -395,7 +395,9 @@
                     所以当自定义返回列的时候必须起一个别名,别名也是有规则,以mapper映射文件中的resultMap中的column名称为主;
                     别名的规律是类名+属性的顺序;比如:public class Test(){ ...id... ...name...;id距离类名中间0个属性,那么就是Test0,name距离类名有1个参数那么别名就是Test1;<br/>
                     有一种最简单的做法就是直接到Mapper里面找&lt;sql id="类名_Column"&gt;中找到想要的列直接copy;<br/>
-                    简单一句话:自定义返回列名时需要给列起一个别名,别名的必须与mapper中resultMap节点对应的属性一致;</span>
+                    简单一句话:自定义返回列名时需要给列起一个别名,别名的必须与mapper中resultMap节点对应的属性一致;<br/>
+                    该参数只在查询全部信息时有用,ById与OfPaging中无效;
+                    </span>
                 </p>
                 <h3>require条件集说明:</h3>
                 <p class="indent">
