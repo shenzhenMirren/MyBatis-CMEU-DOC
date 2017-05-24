@@ -63,6 +63,37 @@
                 <div class="center">
                     <img src="resource/images/1.png" alt="index" width="890">
                 </div>
+                <h3>工具基本目录结构:</h3>
+                <p class="indent">
+                    通用版:
+                </p>
+                <img src="resource/images/jar.png" alt="jar工具" width="618">
+                <p class="indent">
+                    免JDK版:
+                </p>
+                <img src="resource/images/exe.png" alt="免jdk版" width="633">
+                <p class="indent">
+                    <span class="redColor">config:</span>用于存放数据库,配置信息等,为sqlite数据库文件;
+                </p>
+                <p class="indent">
+                    <span class="redColor">libs:</span>用于存放CMEU所需jar包,以及数据库连接jar包(可自己更换);
+                </p>
+                <p class="indent">
+                    <span class="redColor">logs:</span>用于存放CMEU运行时的系统日志,其info文件夹为普通日志,error文件夹为异常日志;
+                </p>
+                <p class="indent">
+                    <span class="redColor">app:</span>app文件夹与通用版一致;
+                </p>
+                <p class="indent">
+                    <span class="redColor">runtime:</span>runtime为java运行所需jre等文件,
+                </p>
+                <p class="indent">
+                    其通用版运行要求系统存在JDK1.8,双击便可运行;
+                </p>
+                <p class="indent">
+                    免JDK版,运行其系统对应运行文件便可,比如Windows版运行.exe便可;
+                </p>
+
                 <div class="line"></div>
             </div>
             <div class="infoItem2">
@@ -202,6 +233,12 @@
                     java数据类型可以自己输入或者下拉选择,属性名双击列便可以输入新的名称回车修改;</p>
                 <h2>选择框相关说明:</h2>
                 <p class="indent">将鼠标悬浮到其选择框上面停留将会出现相应的提示!</p>
+                <h3>表的别名:</h3>
+                <p class="indent">
+                    表的别名用于Mapper映射文件中resultMap节点属性列对应的映射列,
+                    如果起了别名resultMap的id/column属性将会以别名_数据库命名,如果没有起别名将会以类名+属性从上到下的序号编号;
+                    之所以有这个属性是为了当存在相同列名时是不会冲突;
+                </p>
                 <h3>表主键名称:</h3>
                 <p class="indent">
                     系统会自动识别表中的主键,如果识别有误的话可以自己改正;
@@ -372,6 +409,12 @@
                     <h1 class="lineHeight">Assist使用说明</h1>
                     <img src="resource/images/assist.png" alt="assist图片" width="657">
                 </div>
+                <h2 class="lineHeight redColor">
+                    Assist介绍:
+                </h2>
+                <p>
+                    Assist是特别为CMEU定制的查询帮助类,一个项目一个Assist类足以在全部地方使用,生成文件时如果你要继续使用Assist必须选择生成Assist,系统会自动检测是否存在Assist,如果存在Assist系统不会再次创建;如果不存在才会创建;
+                </p>
                 <h3>distinct去重说明:</h3>
                 <p class="indent">distinct为是否去除重复的数据,当需要去重时调用Assist对象的setDistinct(boolean)方法;true为去重,不去重则不需要理会</p>
                 <h3>order排序说明:</h3>
@@ -392,16 +435,18 @@
                     <span class="ref">dao</span>.selectDuhua(assist);<br/>
                 </div>
                 <p class="indent">
-                    以上示例分页中,分别是获得dao接口,创建一个Assist对象,设置从第10行开始取数据,取5行数据->执行,取出来的数据就是第10行到第15行的数据;
+                    以上示例分页中,分别是获得dao接口,创建一个Assist对象,设置从第10行开始取数据,取5行数据->执行,取出来的数据就是第10行到第15行的数据;当然你可以通过<span class="variable">long</span> get类名RowCount(Assist assist);方法来获得总行数等;
                 </p>
                 <h3>resultColumn自定义列说明:</h3>
                 <p class="indent">
                     resultColumn为自定义返回的列,比如表中有5列,你只想取出2列,这个时候你就可以调用Assist对象的setResultColumn(String resultColumn)方法,
-                    参数为想要取出的列,多个列用逗号,分开;比如要取出id跟名字参数值就为===>"id as 类名0 , name as 类名1";<br/>
-                    <span class="redColor">特别需要注意的事项:想必你看到as 类名0跟类名1有点疑惑为什么这样做吧,起别名为了防止别名太长导致报错,所以采用别名的方式:
-                    所以当自定义返回列的时候必须起一个别名,别名也是有规则,以mapper映射文件中的resultMap中的column名称为主;
-                    别名的规律是类名+属性的顺序;比如:public class Test(){ ...id... ...name...;id距离类名中间0个属性,那么就是Test0,name距离类名有1个参数那么别名就是Test1;<br/>
-                    有一种最简单的做法就是直接到Mapper里面找&lt;sql id="类名_Column"&gt;中找到想要的列直接copy;<br/>
+                    参数为想要取出的列,多个列以逗号,分开;比如要取出id跟名字那么参数的参数值就为===>"id as 别名 , name as 别名";<br/>
+                    <span class="redColor">特别需要注意的事项:想必你页看到as 别名 ;也许对这有点疑惑为什么这样做吧,起别名是为了防止存在重复或别名太长导致报错,所以采用别名的方式:
+                    所以当自定义返回列的时候必须起一个别名,别名也是有规则,以mapper映射文件中的resultMap节点的id/column属性名称为主;
+                    别名的规律有两种规律:<br/>
+                        第一种规律为:当你给表起了别名时规律为:别名_表的列明;<br/>
+                        第二种规律为:类名+属性的顺序;<br/>比如:public class Test(){ ...id... ...name...;id距离类名中间0个属性,那么就是Test0,name距离类名有1个参数那么别名就是Test1;<br/>
+                    有一种最简单的做法就是直接到Mapper里面找sql节点,&lt;sql id="类名_Column"&gt;中找到想要的列直接copy;<br/>
                     简单一句话:自定义返回列名时需要给列起一个别名,别名的必须与mapper中resultMap节点对应的属性一致;<br/>
                     该参数只在查询全部信息时有用,ById与OfPaging中无效;
                     </span>
