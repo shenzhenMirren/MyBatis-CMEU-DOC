@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="resource/images/Logo.png" type="image/x-icon" />
+    <link rel="icon" href="resource/images/Logo.png" type="image/x-icon"/>
     <link rel="shortcut icon" href="resource/images/Logo.png" type="image/x-icon"/>
     <title>MyBatis-CMEU</title>
+    <script src="resource/jquery-1.8.3.min.js"></script>
     <script type="text/javascript">
+        var widthFalg=$(window).width()>900;
         function isPC() {
             var userAgentInfo = navigator.userAgent;
             var Agents = ["Android", "iPhone",
@@ -20,21 +22,23 @@
             }
             return flag;
         }
-        if (isPC()==true) {
+        if (isPC() == true&&widthFalg==true) {
             var oCss = document.createElement("link");
             oCss.setAttribute("rel", "stylesheet");
             oCss.setAttribute("type", "text/css");
             oCss.setAttribute("href", "resource/index.css");
+            oCss.setAttribute("link-data", "lind");
             document.getElementsByTagName("head")[0].appendChild(oCss);
         } else {
             var oCss = document.createElement("link");
             oCss.setAttribute("rel", "stylesheet");
             oCss.setAttribute("type", "text/css");
+            oCss.setAttribute("link-data", "lind");
             oCss.setAttribute("href", "resource/index_phone.css");
             document.getElementsByTagName("head")[0].appendChild(oCss);
         }
     </script>
-    <script src="resource/jquery-1.8.3.min.js"></script>
+
 </head>
 <body>
 <div class="menuBack" style="display: none;"></div>
@@ -52,7 +56,8 @@
 <div class="range"></div>
 <div class="aboutUs">
     <div class="CMEUBOX">
-        <span class="nameBox"><span class="name">MyBaits-CMEU </span><span class="version"><span> v2.0.0</span></span></span>
+        <span class="nameBox"><span class="name">MyBaits-CMEU </span><span
+                class="version"><span> v2.0.0</span></span></span>
     </div>
     <div class="des">
         MyBatis-CMEU是一款使用Javafx开发的MyBatis逆向工程,可以生成实体类以及持久层(dao)接口、逻辑层(service)接口、逻辑层(serviceImpl)实现类、映射文件(Mapper)等；
@@ -550,6 +555,30 @@
     </div>
 </div>
 <script type="text/javascript">
+    if (isPC() == true) {
+        $(window).resize(function () {
+            if($(window).width()>900){
+                widthFalg=true;
+                $("[link-data=lind]").remove();
+                var oCss = document.createElement("link");
+                oCss.setAttribute("rel", "stylesheet");
+                oCss.setAttribute("type", "text/css");
+                oCss.setAttribute("href", "resource/index.css");
+                oCss.setAttribute("link-data", "lind");
+                document.getElementsByTagName("head")[0].appendChild(oCss);
+            }else{
+                widthFalg=false;
+                $("[link-data=lind]").remove();
+                var oCss = document.createElement("link");
+                oCss.setAttribute("rel", "stylesheet");
+                oCss.setAttribute("type", "text/css");
+                oCss.setAttribute("link-data", "lind");
+                oCss.setAttribute("href", "resource/index_phone.css");
+                document.getElementsByTagName("head")[0].appendChild(oCss);
+            }
+        });
+    }
+
     //点击事件
     $(".arrow").hide();
     $(".arrow:first").show();
@@ -579,15 +608,15 @@
     $(window).scroll(function () {
         scrollN = $(document).scrollTop();
         scrollN += 80;
-        if(isPC()==true){
-            if (scrollN>=infoTop1){
-                $(".nav").css("position","fixed");
-                $(".nav").css("width","20.7%");
-                $(".nav").css("top","90px");
-            }else{
-                $(".nav").css("position","absolute");
-                $(".nav").css("width","23%");
-                $(".nav").css("top","0px");
+        if (isPC() == true&&widthFalg==true) {
+            if (scrollN >= infoTop1) {
+                $(".nav").css("position", "fixed");
+                $(".nav").css("width", "20.7%");
+                $(".nav").css("top", "90px");
+            } else {
+                $(".nav").css("position", "absolute");
+                $(".nav").css("width", "23%");
+                $(".nav").css("top", "0px");
             }
 
         }
@@ -652,29 +681,29 @@
         ;
     }, 1500);
 
-    var menuFalg=false;
+    var menuFalg = false;
     $(".menu").click(function () {
-        if(menuFalg==false){
+        if (menuFalg == false) {
             $(".menuBack").fadeIn(300);
             $(".nav").fadeIn(300);
-            menuFalg=true;
-        }else{
+            menuFalg = true;
+        } else {
             $(".menuBack").fadeOut(300);
             $(".nav").fadeOut(300);
-            menuFalg=false;
+            menuFalg = false;
         }
     });
 
     $(".menuBack").click(function () {
         $(".menuBack").fadeOut(300);
         $(".nav").fadeOut(300);
-        menuFalg=false;
+        menuFalg = false;
     });
-    if(isPC()==false){
+    if (isPC() == false) {
         $(".navItem").click(function () {
             $(".menuBack").fadeOut(300);
             $(".nav").fadeOut(300);
-            menuFalg=false;
+            menuFalg = false;
         });
     }
 </script>
