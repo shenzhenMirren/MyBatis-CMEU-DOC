@@ -133,6 +133,8 @@
     font-size: 26px;
     font-weight:bold;
     padding-bottom: 20px;
+    padding-left:5%;
+    padding-right:5%;
 }
 .downBox{
     margin-bottom: 10px;
@@ -147,8 +149,8 @@
     border: 2px solid white;
 }
 .downLoad:hover{
-    color: blue;
-    border: 2px solid blue;
+    color: purple;
+    border: 2px solid purple;
 }
 
 /*主体样式*/
