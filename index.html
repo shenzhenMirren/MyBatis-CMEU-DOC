@@ -3,12 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>MyBatis-CMEU使用说明</title>
-    <link href="resource/index.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript">
+        function isPC() {
+            var userAgentInfo = navigator.userAgent;
+            var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+            var flag = true;
+            for (var v = 0; v < Agents.length; v++) {
+                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
+        if (isPC()==true) {
+            var oCss = document.createElement("link");
+            oCss.setAttribute("rel", "stylesheet");
+            oCss.setAttribute("type", "text/css");
+            oCss.setAttribute("href", "resource/index.css");
+            document.getElementsByTagName("head")[0].appendChild(oCss);
+        } else {
+            var oCss = document.createElement("link");
+            oCss.setAttribute("rel", "stylesheet");
+            oCss.setAttribute("type", "text/css");
+            oCss.setAttribute("href", "resource/index_phone.css");
+            document.getElementsByTagName("head")[0].appendChild(oCss);
+        }
+    </script>
     <script src="resource/jquery-1.8.3.min.js"></script>
 </head>
 <body>
+<div class="menuBack" style="display: none;"></div>
 <!--头部-->
 <div class="header">
+    <img class="menu" src="resource/images/menu.png" alt="">
     <div class="logos">
         <h3>
             <img src="resource/images/Logo.png" width="65" height="54">
@@ -17,7 +47,26 @@
         </h3>
     </div>
 </div><!--#头部结束#-->
-
+<div class="range"></div>
+<div class="aboutUs">
+    <div class="CMEUBOX">
+        <span class="nameBox"><span class="name">MyBaits-CMEU </span><span class="version"><span> v2.0.0</span></span></span>
+    </div>
+    <div class="des">
+        MyBatis-CMEU是一款使用Javafx开发的MyBatis逆向工程,可以生成实体类以及持久层(dao)接口、逻辑层(service)接口、逻辑层(serviceImpl)实现类、映射文件(Mapper)等；
+        <br/>CMEU有可能使你忘记Mapper怎么写！
+    </div>
+    <div class="downBox">
+        <a href="http://dl.download.csdn.net/down11/20170603/b55fc72389017ebb88df7a544395ff48.rar?response-content-disposition=attachment%3Bfilename%2A%3D%22utf8%27%27MyBatis-CMEU2.0%E5%90%84%E5%B9%B3%E5%8F%B0%E9%80%9A%E7%94%A8%E7%89%88%5B%E8%A6%81%E6%B1%82JDK1.8.66%E4%BB%A5%E4%B8%8A%5D%E5%8C%85%E5%90%AB%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.rar%22&OSSAccessKeyId=9q6nvzoJGowBj4q1&Expires=1496467419&Signature=wfDEga6Pn2pMudA%2BDbL1Wd3RyOE%3D" target="_blank">
+            <span class="downLoad">通用版下载</span>
+        </a>
+    </div>
+    <div class="downBox">
+        <a href="https://pan.baidu.com/s/1slbf72l#list/path=%2FMyBatis-CMEU2.0" target="_blank">
+            <span class="downLoad">百度云下载</span>
+        </a>
+    </div>
+</div>
 <!--主体内容-->
 <div class="contextBox">
     <div class="context">
@@ -37,6 +86,7 @@
         <div class="docInfo">
             <!--关于MyBatis-CMEU-->
             <div class="infoItem1">
+                <h1 class="lineHeight center">关于MyBatis-CMEU</h1>
                 <p>
                     MyBatis-CMEU全称为:MyBatis Config Mapper Entity Util<br/>
                     简单来说MyBatis-CMEU是一款使用Javafx开发的MyBatis逆向工程帮助工具,该工具支持Oracle,Mysql,SqlServer,PostgreSql等数据库的生成,<br/>
@@ -50,16 +100,21 @@
                 <h3>基本常用功能预览:</h3>
                 <ol>
                     <li>生成实体类(可以自定义：get/set,有参无参构造方法,自定义类型与属性,序列化等);</li>
-                    <li>生成dao层接口(查询全部信息，通过ID查询信息,插入全部属性,插入不为空的属性,通过ID更新全部属性,通过ID更新不为空的属性,通过Assist更新全部属性,通过Assist更新不为空的属性,通过ID删除信息,通过Assist删除信息);</li>
+                    <li>
+                        生成dao层接口(查询全部信息，通过ID查询信息,插入全部属性,插入不为空的属性,通过ID更新全部属性,通过ID更新不为空的属性,通过Assist更新全部属性,通过Assist更新不为空的属性,通过ID删除信息,通过Assist删除信息);
+                    </li>
                     <li>生成Mapper映射文件(dao层接口SQL语句,支持生成3表关联(比如：A表关联B表,B表关联C表,一次便可获得3张表的数据),支持主键策略;&lt;如果选择创建Assist支持分页,去重,排序,无注入动态查询等&gt;);</li>
                     <li>生成service层接口(与dao接口一致)可选项;</li>
                     <li>生成service层实现类(实现service层接口)可选项;</li>
-                    <li>生成查询工具Assist(Assist为CMEU特别定制的查询工具,使用该工具一切操作都变得超简单,比如：分页通过Assist只需要设置2个参数就可以实现比如参数1=10,参数2=5,查询出来就是第10行到15行的数据,同时也可以防注入动态添加查询添加,去重,排序,自定义返回列等)可选项;</li>
+                    <li>
+                        生成查询工具Assist(Assist为CMEU特别定制的查询工具,使用该工具一切操作都变得超简单,比如：分页通过Assist只需要设置2个参数就可以实现比如参数1=10,参数2=5,查询出来就是第10行到15行的数据,同时也可以防注入动态添加查询添加,去重,排序,自定义返回列等)可选项;
+                    </li>
                     <li>生成mybatis配置文件(mybatis的主配置文件,系统会自动识别使用的数据库，并创建其连接,同时更新mapper映射文件的资源路径)可选项;</li>
                     <li>生成mybatisUtil(用于获得SqlSession等操作,当与mybatis配置文件一同创建时系统会自动识别配置文件路径并设置)可选项;</li>
                     <li>更新现有配置文件的mapper映射文件的资源路径(当生成新的信息时自动更新mybatis配置文件的Mapper映射资源路径)可选项;</li>
                 </ol>
-                <h3>程序主界面:</h3>
+                <div class="line"></div>
+                <h1 class="lineHeight center">程序主界面</h1>
                 <div class="center">
                     <img src="resource/images/1.png" alt="index" width="890">
                 </div>
@@ -136,7 +191,7 @@
                     如果跟你的版本不一致可以到libs(免JDK版在app/libs)里面将架包改成你的架包,但是命名规则为:数据库小写JBDC大写<br/>
                     示例:sqlserverJDBC.jar<br/>
                 </p>
-                    <img src="resource/images/jdbcDriver.png" alt="驱动示例图:" width="628">
+                <img src="resource/images/jdbcDriver.png" alt="驱动示例图:" width="628">
                 <div class="line"></div>
                 <h1 class="lineHeight center">
                     配置信息
@@ -173,41 +228,41 @@
                 </p>
                 <h2 class="lineHeight">数据面板说明</h2>
                 <div>
-                <h3>项目所在目录:</h3>
-                <p class="indent">输入或者通过按钮选择项目的目录 <span class="redColor">(也就是路径+项目名称)</span>;</p>
-                <h3>更新mapper资源路径: </h3>
-                <p class="indent">如果已经存在MyBatis配置文件,可以输入或者通过按钮选择MyBatis配置文件所在路径,系统将自动将你新建的映射文件自动更新到mappers中;<br/>
-                    如果不存在配置文件,可以使用勾选创建配置文件;
-                </p>
-                <h2>选择框相关:</h2>
-                <p class="indent">
-                    系统多大部分选择框相关的都有tooltip提示说明:将鼠标悬停在其上后便会做出相应的提示;
-                </p>
-                <div class="center">
-                    <img src="resource/images/tooltip.png" alt="工具提示" width="487">
-                </div>
-                <h3>创建service:</h3>
-                <p class="indent">
-                    当选择创建service时系统将会生成相对应的service接口以及serviceImpl实现类;<br/>
-                    <span class="redColor">注意事项:生成的serviceImpl中dao并没有赋值,只是单纯的声明了dao具体实现根据自己的需要配置,比如Spring注入或者通过MyBatisUtil获得dao的实现;</span>
-                </p>
-                <h3>创建查询工具:</h3>
-                <p class="indent">
-                    创建查询工具Assist,<span class="redColor">推荐创建,因为有它,能很多事情都会变得超级方便;</span>
-                </p>
-                <h3>创建配置文件:</h3>
-                <p class="indent">
-                    创建MyBatis的主配置文件,系统会自动根据你连接的数据库类型生成一个默认的environments连接以及创建mapper的资源路径;
-                </p>
-                <h3>创建帮助工具:</h3>
-                <p class="indent">
-                    创建MyBatis的帮助工具,用于获取sqlsession,如果你已经创建了MyBatis配置文件,帮助工具将自动帮你读取配置文件,你可以通过它获得sqlSession等;
-                </p>
+                    <h3>项目所在目录:</h3>
+                    <p class="indent">输入或者通过按钮选择项目的目录 <span class="redColor">(也就是路径+项目名称)</span>;</p>
+                    <h3>更新mapper资源路径: </h3>
+                    <p class="indent">如果已经存在MyBatis配置文件,可以输入或者通过按钮选择MyBatis配置文件所在路径,系统将自动将你新建的映射文件自动更新到mappers中;<br/>
+                        如果不存在配置文件,可以使用勾选创建配置文件;
+                    </p>
+                    <h2>选择框相关:</h2>
+                    <p class="indent">
+                        系统多大部分选择框相关的都有tooltip提示说明:将鼠标悬停在其上后便会做出相应的提示;
+                    </p>
+                    <div class="center">
+                        <img src="resource/images/tooltip.png" alt="工具提示" width="487">
+                    </div>
+                    <h3>创建service:</h3>
+                    <p class="indent">
+                        当选择创建service时系统将会生成相对应的service接口以及serviceImpl实现类;<br/>
+                        <span class="redColor">注意事项:生成的serviceImpl中dao并没有赋值,只是单纯的声明了dao具体实现根据自己的需要配置,比如Spring注入或者通过MyBatisUtil获得dao的实现;</span>
+                    </p>
+                    <h3>创建查询工具:</h3>
+                    <p class="indent">
+                        创建查询工具Assist,<span class="redColor">推荐创建,因为有它,能很多事情都会变得超级方便;</span>
+                    </p>
+                    <h3>创建配置文件:</h3>
+                    <p class="indent">
+                        创建MyBatis的主配置文件,系统会自动根据你连接的数据库类型生成一个默认的environments连接以及创建mapper的资源路径;
+                    </p>
+                    <h3>创建帮助工具:</h3>
+                    <p class="indent">
+                        创建MyBatis的帮助工具,用于获取sqlsession,如果你已经创建了MyBatis配置文件,帮助工具将自动帮你读取配置文件,你可以通过它获得sqlSession等;
+                    </p>
                     <h3>文件编码格式:</h3>
                     <p class="indent">
                         文件编码格式为文件所有文件以什么方式的格式编码生成;默认以选择utf-8,如果你需要用到GBK编码格式下拉选择便可;
                     </p>
-                 <h3>保存配置:</h3>
+                    <h3>保存配置:</h3>
                     <p class="indent">
                         用于将数据面板的数据保存到配置中心,<span class="redColor">注意事项:配置名称不能重复;如果有重复请先删除原来的配置</span>
                     </p>
@@ -248,12 +303,12 @@
                 <p class="indent">
                     系统会自动识别表中的主键,如果识别有误的话可以自己改正;
                 </p>
-                 <h3>自定义属性:</h3>
+                <h3>自定义属性:</h3>
                 <p class="indent">
                     类型输入你要创建属性的类型;名称输入你要创建的属性名称;点击->添加 便会将属性添加到类中;
                 </p>
                 <h3>生成主键策略说明:</h3>
-                    <img src="resource/images/selectKey.png" alt="主键策略" width="403">
+                <img src="resource/images/selectKey.png" alt="主键策略" width="403">
                 <p class="indent">
                     选择生成主键策略后系统会根据你的数据库类型为你生成基础的模板,这个时候你需要补充输入框中缺乏的信息,比如上图的示例中为Oracle的主键策略,但是还缺少了序列的名称,这个时候你需要将序列名补充上;
                 </p>
@@ -273,33 +328,33 @@
                     <h1 class="lineHeight">添加第二级新表说明</h1>
                     <img src="resource/images/5.png" alt="添加第二级新表界面" width="890">
                 </div>
-                    <p class="indent">
-                        在修改属性页中点击添加表作为属性/添加表作为集合打开本窗体后,如上图所显示;<br/>
-                        左侧与修改属性页基本一致的功能,只是多了一个数据库表的列表,
-                        双击选择左侧列表中的表将其加载至属性表格中,如果类型不合适可以自己修改;
-                    </p>
-                    <h3>全部生成:</h3>
-                    <p class="indent">全部生成只是一个勾选的功能,当你点击全部生成后,生成实体类/dao/service...等都会跟着该选择框一起变化</p>
-                    <h3>类/接口/映射文件的创建:</h3>
-                    <p class="indent">
-                        当需要生成实体类或者service等等的可以勾选相应的选择框,不勾选就不创建生成,如果文件已经存在会覆盖原文件,文件包名将以首页的相应包名为该文件的包名;
-                    </p>
-                    <h3>生成主键策略:</h3>
-                    <p class="indent">主键策略与修改属性页面一致,选择主键策略补充缺乏的信息便可</p>
-                    <h3>添加表作为表的一个属性/集合说明:</h3>
-                    <p class="indent">
-                        点击添加表作为属性/集合时将会打开第三个窗口,选择新的窗口,新窗口与当前基本一致界面如下图,只是第三个窗口不能再继续添加属性或者集合;
-                    </p>
-                    <h3>与上一级连接的方式说明:</h3>
-                    <p class="indent">
-                        该功能用于当添加属性或者集合时指明该表与上一级的表连接关系,三种连接方式自己选择,系统会识别上一张表的名称,以及主键列,并补充至其输入框中,如果连接表输入框中或者连接列输入框中的连接信息有误可以自己修改;<br/>
-                        <span class="redColor">当前窗体连接表/连接列的输入框的信息为上一级的信息,表示当前窗体与上一级的连接关系;</span>
-                    </p>
-                    <h3>第二/三级窗体的界面:</h3>
-                    <div class="center">
-                        <br/>
-                        <img src="resource/images/6.png" alt="第三级窗体图片" width="890">
-                    </div>
+                <p class="indent">
+                    在修改属性页中点击添加表作为属性/添加表作为集合打开本窗体后,如上图所显示;<br/>
+                    左侧与修改属性页基本一致的功能,只是多了一个数据库表的列表,
+                    双击选择左侧列表中的表将其加载至属性表格中,如果类型不合适可以自己修改;
+                </p>
+                <h3>全部生成:</h3>
+                <p class="indent">全部生成只是一个勾选的功能,当你点击全部生成后,生成实体类/dao/service...等都会跟着该选择框一起变化</p>
+                <h3>类/接口/映射文件的创建:</h3>
+                <p class="indent">
+                    当需要生成实体类或者service等等的可以勾选相应的选择框,不勾选就不创建生成,如果文件已经存在会覆盖原文件,文件包名将以首页的相应包名为该文件的包名;
+                </p>
+                <h3>生成主键策略:</h3>
+                <p class="indent">主键策略与修改属性页面一致,选择主键策略补充缺乏的信息便可</p>
+                <h3>添加表作为表的一个属性/集合说明:</h3>
+                <p class="indent">
+                    点击添加表作为属性/集合时将会打开第三个窗口,选择新的窗口,新窗口与当前基本一致界面如下图,只是第三个窗口不能再继续添加属性或者集合;
+                </p>
+                <h3>与上一级连接的方式说明:</h3>
+                <p class="indent">
+                    该功能用于当添加属性或者集合时指明该表与上一级的表连接关系,三种连接方式自己选择,系统会识别上一张表的名称,以及主键列,并补充至其输入框中,如果连接表输入框中或者连接列输入框中的连接信息有误可以自己修改;<br/>
+                    <span class="redColor">当前窗体连接表/连接列的输入框的信息为上一级的信息,表示当前窗体与上一级的连接关系;</span>
+                </p>
+                <h3>第二/三级窗体的界面:</h3>
+                <div class="center">
+                    <br/>
+                    <img src="resource/images/6.png" alt="第三级窗体图片" width="890">
+                </div>
             </div>
             <div class="infoItem6">
                 <div class="line"></div>
@@ -318,8 +373,11 @@
                     <span class="variable">int</span> delete类名(Assist assist);<br/>
                     <span class="variable">int</span> update类名ById(类型 enti);<br/>
                     <span class="variable">int</span> updateNonEmpty类名ById(类型 enti);<br/>
-                    <span class="variable">int</span> update类名(<span class="param">@Param</span>(<span class="value">"enti") </span>类型 value, <span class="param">@Param</span>(<span class="value">"assist"</span>) Assist assist);<br/>
-                    <span class="variable">int</span> updateNonEmpty类名(<span class="param">@Param</span>(<span class="value">"enti") </span>类型 value, <span class="param">@Param</span>(<span class="value">"assist"</span>) Assist assist);<br/>
+                    <span class="variable">int</span> update类名(<span class="param">@Param</span>(<span class="value">"enti") </span>类型
+                    value, <span class="param">@Param</span>(<span class="value">"assist"</span>) Assist assist);<br/>
+                    <span class="variable">int</span> updateNonEmpty类名(<span class="param">@Param</span>(<span
+                        class="value">"enti") </span>类型 value, <span class="param">@Param</span>(<span class="value">"assist"</span>)
+                    Assist assist);<br/>
                     <span class="annotation">//-----------------没有Assist帮助类接口--------------------</span><br/>
                     <span class="variable">long</span> get类名RowCount();<br/>
                     List&lt;类型&gt; select类名();<br/>
@@ -331,7 +389,7 @@
                     <span class="variable">int</span> updateNonEmpty类名ById(类型 enti);<br/>
                 </p>
 
-                <h3> <span class="variable">long</span> get类名RowCount(Assist assist);</h3>
+                <h3><span class="variable">long</span> get类名RowCount(Assist assist);</h3>
                 <p class="indent">
                     该方法用于获得查询数据总行数,返回类型为long类型,当没有生成Assist时为无参方法,当有Assist帮助类时参数为Assist为帮助类,如果你需要设置条件那么就创建一个Assist传入,如果没有条件那么直接就传null便可;关于Assist如何使用请看下一节Assist使用说明;
                 </p>
@@ -339,7 +397,8 @@
                     List&lt;类型&gt; select类名(Assist assist);<br/>
                 </h3>
                 <p class="indent">
-                    该方法用于获取所有数据,返回类型为List&lt;类型&gt; ,当没有生成Assist时为无参方法,当有Assist帮助类时参数为Assist为帮助类,如果你需要设置条件那么就创建一个Assist传入,如果没有参数那么直接就传null便可;关于Assist如何使用请看下一节Assist使用说明;
+                    该方法用于获取所有数据,返回类型为List&lt;类型&gt;
+                    ,当没有生成Assist时为无参方法,当有Assist帮助类时参数为Assist为帮助类,如果你需要设置条件那么就创建一个Assist传入,如果没有参数那么直接就传null便可;关于Assist如何使用请看下一节Assist使用说明;
                 </p>
                 <h3>
                     List&lt;类型&gt; select类名OfPaging(Assist assist);<br/>
@@ -350,7 +409,8 @@
                         由于MyBatis的sql映射机制,如果采用结果映射,那么分页获取出来的数据,在类中集合(子表类)就会缺少数据,所以只能使用嵌套查询,该方法其SQL语句采用的就是嵌套映射,每查一次主表就去查一次子表;
                         所以使用中如果需要获取带有集合属性的类且需要分页就采用该方法,如果获取全部信息的话直接使用不带OfPaging的查询方法便可以了,因为效率比该方法高;<br/>
                     </span>
-                    该方法用于获取所有数据(分页不缺少数据),返回类型为List&lt;类型&gt; ,参数为Assist为帮助类,如果你需要设置条件那么就创建一个Assist传入,如果没有参数那么直接就传null便可;关于Assist如何使用请看下一节Assist使用说明;
+                    该方法用于获取所有数据(分页不缺少数据),返回类型为List&lt;类型&gt;
+                    ,参数为Assist为帮助类,如果你需要设置条件那么就创建一个Assist传入,如果没有参数那么直接就传null便可;关于Assist如何使用请看下一节Assist使用说明;
                 </p>
                 <h3>
                     类型 select类名ById(主键类型 id);<br/>
@@ -395,13 +455,17 @@
                     该方法用于通过主键更新实体类中值不为null的属性到数据库,返回受影响的行数类型为int类型,参数为对应的实体类;
                 </p>
                 <h3>
-                    <span class="variable">int</span> update类名(<span class="param">@Param</span>(<span class="value">"enti") </span>类型 value, <span class="param">@Param</span>(<span class="value">"assist"</span>) Assist assist);<br/>
+                    <span class="variable">int</span> update类名(<span class="param">@Param</span>(<span class="value">"enti") </span>类型
+                    value, <span class="param">@Param</span>(<span class="value">"assist"</span>) Assist assist);<br/>
                 </h3>
                 <p class="indent">
-                    该方法为Assist帮助类特有的方法,用于将实体类中的全部的属性(包括值为null)更新到符合Assist条件的表中,返回受影响的行数类型为int类型,参数1 enti为对应的实体类,参数2 为Assist类;
+                    该方法为Assist帮助类特有的方法,用于将实体类中的全部的属性(包括值为null)更新到符合Assist条件的表中,返回受影响的行数类型为int类型,参数1 enti为对应的实体类,参数2
+                    为Assist类;
                 </p>
                 <h3>
-                    <span class="variable">int</span> updateNonEmpty类名(<span class="param">@Param</span>(<span class="value">"enti") </span>类型 value, <span class="param">@Param</span>(<span class="value">"assist"</span>) Assist assist);<br/>
+                    <span class="variable">int</span> updateNonEmpty类名(<span class="param">@Param</span>(<span
+                        class="value">"enti") </span>类型 value, <span class="param">@Param</span>(<span class="value">"assist"</span>)
+                    Assist assist);<br/>
                 </h3>
                 <p class="indent">
                     该方法为Assist帮助类特有的方法,用于将实体类中值不为null的属性更新到符合Assist条件的表中,返回受影响的行数类型为int类型,参数1 enti为对应的实体类,参数2 为Assist类;
@@ -423,7 +487,8 @@
                 <h3>distinct去重说明:</h3>
                 <p class="indent">distinct为是否去除重复的数据,当需要去重时调用Assist对象的setDistinct(boolean)方法;true为去重,不去重则不需要理会</p>
                 <h3>order排序说明:</h3>
-                <p class="indent">order为对数据进行排序,当需要排序时调用Assist对象的setOrder(String column, boolean mode)方法;column参数为要排序的列名,mode参数 true 为正序排序,false为倒序排序</p>
+                <p class="indent">order为对数据进行排序,当需要排序时调用Assist对象的setOrder(String column, boolean
+                    mode)方法;column参数为要排序的列名,mode参数 true 为正序排序,false为倒序排序</p>
                 <h3>startRow/rowSize--->分页说明:</h3>
                 <p class="indent">
                     startRow:从第几行开始取数据;
@@ -433,14 +498,16 @@
                 </p>
                 <h3 class="redColor">实现分页示例代码:</h3>
                 <div class="isCode">
-                    DuhuaDao <span class="ref">dao</span>=MyBatisUtil.getSession().getMapper(DuhuaDao.<span class="variable">class</span>);<br/>
+                    DuhuaDao <span class="ref">dao</span>=MyBatisUtil.getSession().getMapper(DuhuaDao.<span
+                        class="variable">class</span>);<br/>
                     Assist <span class="ref">assist</span>=<span class="variable">new</span> Assist();<br/>
                     <span class="ref">assist</span>.setStartRow(10);<br/>
                     <span class="ref">assist</span>.setRowSize(5);<br/>
                     <span class="ref">dao</span>.selectDuhua(assist);<br/>
                 </div>
                 <p class="indent">
-                    以上示例分页中,分别是获得dao接口,创建一个Assist对象,设置从第10行开始取数据,取5行数据->执行,取出来的数据就是第10行到第15行的数据;当然你可以通过<span class="variable">long</span> get类名RowCount(Assist assist);方法来获得总行数等;
+                    以上示例分页中,分别是获得dao接口,创建一个Assist对象,设置从第10行开始取数据,取5行数据->执行,取出来的数据就是第10行到第15行的数据;当然你可以通过<span
+                        class="variable">long</span> get类名RowCount(Assist assist);方法来获得总行数等;
                 </p>
                 <h3>resultColumn自定义列说明:</h3>
                 <p class="indent">
@@ -458,15 +525,14 @@
                 </p>
                 <h3>require条件集说明:</h3>
                 <p class="indent">
-                    require属性为条件集,当查询的时需要条件,就可以调用Assist对象的setRequires(whereRequire... require)方法,参数whereRequire类型是Assist的内部条件类,参数个数无限,可以直接使用Assist的静态条件方法传入条件;有以下静态条件方法:<br/>
+                    require属性为条件集,当查询的时需要条件,就可以调用Assist对象的setRequires(whereRequire...
+                    require)方法,参数whereRequire类型是Assist的内部条件类,参数个数无限,可以直接使用Assist的静态条件方法传入条件;有以下静态条件方法:<br/>
                     <img src="resource/images/ststicFun.png" alt="Assist静态方法" width="309"><br/>
                     静态条件方法使用为:Assist.xxx_xxx("表名.列名","值");当只操作一张表或者没有重复列名的时候可以只写列名,
                     当然如果静态条件方法不满足你也可以新建一个对象传入;
                 </p>
                 <h3 class="redColor">综合使用案例:</h3>
-                <div class="center">
-                    <img src="resource/images/case.png" alt="使用案例图片" width="890">
-                </div>
+                <img src="resource/images/case.png" alt="使用案例图片" width="890">
             </div>
             <div class="infoItem8">
                 <div class="line"></div>
@@ -474,13 +540,15 @@
                     <h1 class="lineHeight">开源以及部分素材的来源说明</h1>
                 </div>
                 <ol>
-                    <li>本软件完全开源并托管于github:<a href="https://github.com/shenzhenMirren/MyBatis-CMEU" target="_blank">https://github.com/shenzhenMirren/MyBatis-CMEU</a>, 本软件允许任何人做修改发布,但是希望也是免费提别人使用,同时希望留下QQ交流群号,以便于大家交流以及改进软件,同时留下QQ交流群也表示对作者以及软件的尊重;毕竟作者花费了很多心血才完成该软件;作者开发本软件的出发点就是让每个开发人员更轻松的完成开发;</li>
+                    <li>本软件完全开源并托管于github:<a href="https://github.com/shenzhenMirren/MyBatis-CMEU" target="_blank">https://github.com/shenzhenMirren/MyBatis-CMEU</a>,
+                        本软件允许任何人做修改发布,但是希望也是免费提别人使用,同时希望留下QQ交流群号,以便于大家交流以及改进软件,同时留下QQ交流群也表示对作者以及软件的尊重;毕竟作者花费了很多心血才完成该软件;作者开发本软件的出发点就是让每个开发人员更轻松的完成开发;
+                    </li>
                     <li>本软件的icon蓝领带小鸟修改来自百度搜索出来的图片;</li>
                     <li>本软件的界面图标数据库连接,配置信息,数据库,表的图标取自mybatis-generator-gui:群号为:613911142</li>
                     <li>本软件作者Email为:690389491@qq.com,使用过程软件出现问题或者有好的建议可以发Email给我;</li>
                 </ol>
             </div>
-            <div style="height: 1000px;width: 100%"></div>
+            <div style="height: 100px;width: 100%"></div>
         </div>
     </div>
 </div>
@@ -511,13 +579,22 @@
     var infoTop6 = ($(".infoItem6").offset().top);
     var infoTop7 = ($(".infoItem7").offset().top);
     var infoTop8 = ($(".infoItem8").offset().top);
-
     $(window).scroll(function () {
         scrollN = $(document).scrollTop();
         scrollN += 80;
-        if (scrollN >= infoTop8) {
-            navAction($(".navItem:eq(7)"));
-        } else if (scrollN >= infoTop7) {
+        if(isPC()==true){
+            if (scrollN>=infoTop1){
+                $(".nav").css("position","fixed");
+                $(".nav").css("width","20.7%");
+                $(".nav").css("top","90px");
+            }else{
+                $(".nav").css("position","absolute");
+                $(".nav").css("width","23%");
+                $(".nav").css("top","0px");
+            }
+
+        }
+        if (scrollN >= infoTop7) {
             navAction($(".navItem:eq(6)"));
         } else if (scrollN >= infoTop6) {
             navAction($(".navItem:eq(5)"));
@@ -578,7 +655,31 @@
         ;
     }, 1500);
 
+    var menuFalg=false;
+    $(".menu").click(function () {
+        if(menuFalg==false){
+            $(".menuBack").fadeIn(300);
+            $(".nav").fadeIn(300);
+            menuFalg=true;
+        }else{
+            $(".menuBack").fadeOut(300);
+            $(".nav").fadeOut(300);
+            menuFalg=false;
+        }
+    });
 
+    $(".menuBack").click(function () {
+        $(".menuBack").fadeOut(300);
+        $(".nav").fadeOut(300);
+        menuFalg=false;
+    });
+    if(isPC()==false){
+        $(".navItem").click(function () {
+            $(".menuBack").fadeOut(300);
+            $(".nav").fadeOut(300);
+            menuFalg=false;
+        });
+    }
 </script>
 </body>
 </html>
