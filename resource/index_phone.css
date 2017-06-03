@@ -179,7 +179,7 @@
 }
 .nav{
     position: fixed;
-    width: 50%;
+    width: 40%;
     height: 100%;
     z-index: 99;
     top: 90px;
