@@ -200,9 +200,9 @@
     margin-top: 20px;
 }
 .nav ul{
-    position: fixed;
+    position: absolute;
     list-style-type:none;
-    width:20%;
+    width:80%;
 }
 .nav ul li{
     margin-bottom: 10px;
