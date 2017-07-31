@@ -64,7 +64,7 @@
         <br/>CMEU有可能使你忘记Mapper怎么写！
     </div>
     <div class="downBox">
-        <a href="https://pan.baidu.com/s/1slbf72l#list/path=%2FMyBatis-CMEU2.0" target="_blank">
+        <a href="https://pan.baidu.com/s/1nuLbS9b#list/path=%2FMyBatis-CMEU2.0" target="_blank">
             <span class="downLoad">百度云下载</span>
         </a>
     </div>
@@ -234,7 +234,7 @@
                 <div>
                     <h3>项目所在目录:</h3>
                     <p class="indent">输入或者通过按钮选择项目的目录 <span class="redColor">(也就是路径+项目名称)</span>;</p>
-                    <h3>路径占位符{路径}: </h3>
+                    <h3>路径占位符  {路径}: </h3>
                     <p class="indent">
                         占位符主要作用于类似Maven/Gradle等采用src/main/java等源码规范路径,假设我们生成的文件要放置在,src/maim/java
                         /com/cmeu/dao中,src/maim/java是源码路径,com/cmeu/dao是项目中的包,这时我们就可以这样写
@@ -250,8 +250,8 @@
                         系统多大部分选择框相关的都有tooltip提示说明:将鼠标悬停在其上后便会做出相应的提示;
                     </p>
                     <div class="center">
-                        <img src="resource/images/tooltip.png" alt="工具提示" width="487">
                     </div>
+                    <img src="resource/images/tooltip.png" alt="工具提示" width="487">
                     <h3>创建service:</h3>
                     <p class="indent">
                         当选择创建service时系统将会生成相对应的service接口以及serviceImpl实现类;<br/>
@@ -368,8 +368,8 @@
                 <h3>第二/三级窗体的界面:</h3>
                 <div class="center">
                     <br/>
-                    <img src="resource/images/6.png" alt="第三级窗体图片" width="890">
                 </div>
+                <img src="resource/images/6.png" alt="第三级窗体图片" width="890">
             </div>
             <div class="infoItem6">
                 <div class="line"></div>
@@ -381,6 +381,7 @@
                     <span class="variable">long</span> get类名RowCount(Assist assist);<br/>
                     List&lt;类型&gt; select类名(Assist assist);<br/>
                     List&lt;类型&gt; select类名OfPaging(Assist assist);<br/>
+                    类型 select类名ByObj(类名 obj);<br/>
                     类型 select类名ById(Integer id);<br/>
                     <span class="variable">int</span> insert类名(类型 value);<br/>
                     <span class="variable">int</span> insertNonEmpty类名(类型 value);<br/>
@@ -396,6 +397,7 @@
                     <span class="annotation">//-----------------没有Assist帮助类接口--------------------</span><br/>
                     <span class="variable">long</span> get类名RowCount();<br/>
                     List&lt;类型&gt; select类名();<br/>
+                    类型 select类名ByObj(类名 obj);<br/>
                     类型 select类名ById(Integer id);<br/>
                     <span class="variable">int</span> insert类名(类型 value);<br/>
                     <span class="variable">int</span> insertNonEmpty类名(类型 value);<br/>
@@ -426,6 +428,12 @@
                     </span>
                     该方法用于获取所有数据(分页不缺少数据),返回类型为List&lt;类型&gt;
                     ,参数为Assist为帮助类,如果你需要设置条件那么就创建一个Assist传入,如果没有参数那么直接就传null便可;关于Assist如何使用请看下一节Assist使用说明;
+                </p>
+                <h3>
+                    类型 select类名ByObj(类名 obj);<br/>
+                </h3>
+                <p class="indent">
+                    该方法用于通过对象获取中不为null的属性到数据库中查询得到一个返回对象
                 </p>
                 <h3>
                     类型 select类名ById(主键类型 id);<br/>
@@ -491,8 +499,8 @@
                 <div class="line"></div>
                 <div class="center">
                     <h1 class="lineHeight">Assist使用说明</h1>
-                    <img src="resource/images/assist.png" alt="assist图片" width="657">
                 </div>
+                <img src="resource/images/assist.png" alt="assist图片" width="657">
                 <h2 class="lineHeight redColor">
                     Assist介绍:
                 </h2>
@@ -558,7 +566,7 @@
                     <li>本软件完全开源并托管于github:<a href="https://github.com/shenzhenMirren/MyBatis-CMEU" target="_blank">https://github.com/shenzhenMirren/MyBatis-CMEU</a>,
                         本软件允许任何人做修改发布,但是希望也是免费提别人使用,同时希望留下QQ交流群号,以便于大家交流以及改进软件,同时留下QQ交流群也表示对作者以及软件的尊重;毕竟作者花费了很多心血才完成该软件;作者开发本软件的出发点就是让每个开发人员更轻松的完成开发;
                     </li>
-                    <li>本软件的icon蓝领带小鸟修改来自百度搜索出来的图片;</li>
+                    <li>本软件的icon蓝领带小鸟修改来自百度搜索出来的图片,貌似来自mybatis-plus;</li>
                     <li>本软件的界面图标数据库连接,配置信息,数据库,表的图标取自mybatis-generator-gui:群号为:613911142</li>
                     <li>本软件作者Email为:690389491@qq.com,使用过程软件出现问题或者有好的建议可以发Email给我;</li>
                 </ol>
