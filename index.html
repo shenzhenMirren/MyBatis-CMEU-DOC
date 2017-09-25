@@ -201,7 +201,7 @@
                     配置信息
                 </h1>
                 <div class="center">
-                    <img src="resource/images/3.png" alt="配置信息" width="526">
+                    <img src="resource/images/historyConfig.png" alt="配置信息" width="526">
                 </div>
                 <h3>新增配置信息</h3>
                 <p class="indent">
@@ -215,6 +215,11 @@
                 <h3>删除配置信息</h3>
                 <p class="indent">
                     可以通过配置信息->操作->删除配置;确定便可;
+                </p>
+                <h3>实体类创建时常用设置</h3>
+                <p class="indent">
+                    可以选择创建实体类的习惯并保存,后面生成实体类就会根据你的设置进行生成,
+                    <span class="redColor"><br/>如果保存报错可能是因为旧版本的config.db跟新版本的config.db不兼容,可以删除config文件夹中的config.db再执行</span>
                 </p>
             </div>
             <div class="infoItem3">
@@ -386,6 +391,7 @@
                     类型 select类名ById(Integer id);<br/>
                     <span class="variable">int</span> insert类名(类型 value);<br/>
                     <span class="variable">int</span> insertNonEmpty类名(类型 value);<br/>
+                    <span class="variable">int</span> insert类名Batch(List&lt;类型&gt; value);<br/>
                     <span class="variable">int</span> delete类名ById(主键类型 id);<br/>
                     <span class="variable">int</span> delete类名(Assist assist);<br/>
                     <span class="variable">int</span> update类名ById(类型 enti);<br/>
@@ -402,6 +408,7 @@
                     类型 select类名ById(Integer id);<br/>
                     <span class="variable">int</span> insert类名(类型 value);<br/>
                     <span class="variable">int</span> insertNonEmpty类名(类型 value);<br/>
+                    <span class="variable">int</span> insert类名Batch(List&lt;类型&gt; value);<br/>
                     <span class="variable">int</span> delete类名ById(主键类型 id);<br/>
                     <span class="variable">int</span> update类名ById(类型 enti);<br/>
                     <span class="variable">int</span> updateNonEmpty类名ById(类型 enti);<br/>
@@ -453,6 +460,12 @@
                 </h3>
                 <p class="indent">
                     该方法用于将实体类中值不为null的数据持久化到数据库,返回受影响的行数类型为int类型,SQL语句会自动回将不会null的数据进行插入;
+                </p>
+                <h3>
+                    <span class="variable">int</span> insert类名Batch(List&lt;类型&gt; value);<br/>
+                </h3>
+                <p class="indent">
+                    该方法用于将实体类集合插入到数据库中,主要用于批量插入
                 </p>
                 <h3>
                     <span class="variable">int</span> delete类名ById(主键类型 id);<br/>
@@ -537,7 +550,7 @@
                 <p class="indent">
                     resultColumn为自定义返回的列,比如表中有5列,你只想取出2列,这个时候你就可以调用Assist对象的setResultColumn(String resultColumn)方法,
                     参数为想要取出的列,多个列以逗号,分开;比如要取出id跟名字那么参数的参数值就为===>"id as 别名 , name as 别名";<br/>
-                    <span class="redColor">特别需要注意的事项:想必你页看到as 别名 ;也许对这有点疑惑为什么这样做吧,起别名是为了防止存在重复或别名太长导致报错,所以采用别名的方式:
+                    <span class="redColor">特别需要注意的事项:你看到as 别名 ;也许对这有点疑惑为什么这样做吧,起别名是为了防止存在重复或别名太长导致报错,所以采用别名的方式:
                     所以当自定义返回列的时候必须起一个别名,别名也是有规则,以mapper映射文件中的resultMap节点的id/column属性名称为主;
                     别名的规律有两种规律:<br/>
                         第一种规律为:当你给表起了别名时规律为:别名_表的列明;<br/>
@@ -551,8 +564,8 @@
                 <p class="indent">
                     require属性为条件集,当查询的时需要条件,就可以调用Assist对象的setRequires(whereRequire...
                     require)方法,参数whereRequire类型是Assist的内部条件类,参数个数无限,可以直接使用Assist的静态条件方法传入条件;有以下静态条件方法:<br/>
-                    <img src="resource/images/ststicFun.png" alt="Assist静态方法" width="309"><br/>
-                    静态条件方法使用为:Assist.xxx_xxx("表名.列名","值");当只操作一张表或者没有重复列名的时候可以只写列名,
+                    <img src="resource/images/staticFun.png" alt="Assist静态方法" width="309"><br/>
+                    静态条件方法使用为:Assist.xxxXxx("表名.列名","值");当只操作一张表或者没有重复列名的时候可以只写列名,
                     当然如果静态条件方法不满足你也可以新建一个对象传入;
                 </p>
                 <h3 class="redColor">综合使用案例:</h3>
