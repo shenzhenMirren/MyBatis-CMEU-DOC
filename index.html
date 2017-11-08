@@ -6,8 +6,7 @@
     <link rel="icon" href="resource/images/Logo.png" type="image/x-icon" />
     <link rel="shortcut icon" href="resource/images/Logo.png" type="image/x-icon" />
     <title>MyBatis-CMEU</title>
-    <!-- <script src="resource/jquery-1.8.3.min.js"></script> -->
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+     <script src="resource/jquery-1.8.3.min.js"></script>
     <script type="text/javascript">
         var widthFalg = $(window).width() > 900;
 
@@ -59,6 +58,8 @@
         </div>
     </div>
     <!--#头部结束#-->
+    <a name="about-cmeu"></a><!--关于MyBatis-CMEU锚点-->
+
     <div class="range"></div>
     <div class="aboutUs">
         <div class="CMEUBOX">
@@ -81,16 +82,17 @@
             <!--功能导航-->
             <div class="nav">
                 <ul>
-                    <li class="navItem navAction" data-falg="infoItem1"><span class="arrow"></span>关于MyBatis-CMEU</li>
-                    <li class="navItem" data-falg="infoItem2"><span class="arrow"></span>连接数据库/配置信息</li>
-                    <li class="navItem" data-falg="infoItem3"><span class="arrow"></span>CMEU首页说明</li>
-                    <li class="navItem" data-falg="infoItem4"><span class="arrow"></span>修改属性页说明</li>
-                    <li class="navItem" data-falg="infoItem5"><span class="arrow"></span>添加第二/三级新表说明</li>
-                    <li class="navItem" data-falg="infoItem6"><span class="arrow"></span>dao/service接口说明</li>
-                    <li class="navItem" data-falg="infoItem7"><span class="arrow"></span>Assist使用说明</li>
-                    <li class="navItem" data-falg="infoItem8"><span class="arrow"></span>开源说明</li>
+                    <a href="#about-cmeu" style="text-decoration: none"><li class="navItem navAction" data-falg="infoItem1"><span class="arrow"></span>关于MyBatis-CMEU</li></a>
+                    <a href="#set-config" style="text-decoration: none"><li class="navItem" data-falg="infoItem2"><span class="arrow"></span>连接数据库/配置信息</li></a>
+                    <a href="#cmeu-index" style="text-decoration: none"><li class="navItem" data-falg="infoItem3"><span class="arrow"></span>CMEU首页说明</li></a>
+                    <a href="#set-attribute" style="text-decoration: none"> <li class="navItem" data-falg="infoItem4"><span class="arrow"></span>修改属性页说明</li></a>
+                    <a href="#set-attribute-add" style="text-decoration: none"> <li class="navItem" data-falg="infoItem5"><span class="arrow"></span>添加第二/三级新表说明</li></a>
+                    <a href="#dao-service" style="text-decoration: none"><li class="navItem" data-falg="infoItem6"><span class="arrow"></span>dao/service接口说明</li></a>
+                    <a href="#cmeu-assist" style="text-decoration: none"> <li class="navItem" data-falg="infoItem7"><span class="arrow"></span>Assist使用说明</li></a>
+                    <a href="#open-resource" style="text-decoration: none"><li class="navItem" data-falg="infoItem8"><span class="arrow"></span>开源说明</li></a>
                 </ul>
             </div>
+
             <div class="docInfo">
                 <!--关于MyBatis-CMEU-->
                 <div class="infoItem1">
@@ -159,6 +161,7 @@
 
                     <div class="line"></div>
                 </div>
+                <a name="set-config"></a>
                 <div class="infoItem2">
                     <h1 class="lineHeight center">新建数据库连接</h1>
                     <div class="center">
@@ -226,10 +229,11 @@
                     </p>
                 </div>
                 <div class="infoItem3">
+                    <a name="cmeu-index"></a>
                     <div class="line"></div>
                     <h1 class="lineHeight center">首页使用说明</h1>
                     <div class="center">
-                        <img src="resource/images/indexss.png" alt="首页" width="890">
+                        <img src="resource/images/index.png" alt="首页" width="890">
                     </div>
                     <h3>数据库列表</h3>
                     <p class="indent">
@@ -299,6 +303,7 @@
                     </div>
                 </div>
                 <div class="infoItem4">
+                    <a name="set-attribute"></a>
                     <div class="line"></div>
                     <div class="center">
                         <h1 class="lineHeight">修改属性页面说明</h1>
@@ -341,6 +346,7 @@
 
                 </div>
                 <div class="infoItem5">
+                    <a name="set-attribute-add"></a>
                     <div class="line"></div>
                     <div class="center">
                         <h1 class="lineHeight">添加第二级新表说明</h1>
@@ -373,6 +379,7 @@
                     <img src="resource/images/6.png" alt="第三级窗体图片" width="890">
                 </div>
                 <div class="infoItem6">
+                    <a name="dao-service"></a>
                     <div class="line"></div>
                     <div class="center">
                         <h1 class="lineHeight">dao/service接口说明</h1>
@@ -498,6 +505,7 @@
 
                 </div>
                 <div class="infoItem7">
+                    <a name="cmeu-assist"></a>
                     <div class="line"></div>
                     <div class="center">
                         <h1 class="lineHeight">Assist使用说明</h1>
@@ -556,6 +564,7 @@
                     <img src="resource/images/case.png" alt="使用案例图片" width="890">
                 </div>
                 <div class="infoItem8">
+                    <a name="open-resource"></a>
                     <div class="line"></div>
                     <div class="center">
                         <h1 class="lineHeight">开源以及部分素材的来源说明</h1>
@@ -603,12 +612,6 @@
         $(".arrow:first").show();
         $(".navItem").click(function () {
             navAction($(this));
-            var index = $("." + $(this).attr("data-falg")).offset().top;
-            var curIndex = $(document).scrollTop();
-            $("html,body").animate({
-                scrollTop: index - 70
-            }, 0);
-
         });
 
         function navAction(nav) {
@@ -618,19 +621,18 @@
             nav.addClass("navAction");
         }
         //滚轮事件
-        var scrollN = 0,
-            margin = 300;
+        var scrollN = 0;
+
         var infoTop1 = ($(".infoItem1").offset().top);
-        var infoTop2 = ($(".infoItem2").offset().top) - margin;
-        var infoTop3 = ($(".infoItem3").offset().top) - margin;
-        var infoTop4 = ($(".infoItem4").offset().top) - margin;
-        var infoTop5 = ($(".infoItem5").offset().top) - margin;
-        var infoTop6 = ($(".infoItem6").offset().top) - margin;
-        var infoTop7 = ($(".infoItem7").offset().top) - margin;
+        var infoTop2 = ($(".infoItem2").offset().top);
+        var infoTop3 = ($(".infoItem3").offset().top);
+        var infoTop4 = ($(".infoItem4").offset().top);
+        var infoTop5 = ($(".infoItem5").offset().top);
+        var infoTop6 = ($(".infoItem6").offset().top);
+        var infoTop7 = ($(".infoItem7").offset().top);
         var infoTop8 = ($(".infoItem8").offset().top);
         $(window).scroll(function () {
             scrollN = $(document).scrollTop();
-            scrollN += 80;
             if (isPC() == true && widthFalg == true) {
                 if (scrollN >= infoTop1) {
                     $(".nav").css("position", "fixed");
@@ -641,23 +643,23 @@
                     $(".nav").css("width", "23%");
                     $(".nav").css("top", "0px");
                 }
+            }
 
-            }
-            if (scrollN >= infoTop7) {
-                navAction($(".navItem:eq(6)"));
-            } else if (scrollN >= infoTop6) {
-                navAction($(".navItem:eq(5)"));
-            } else if (scrollN >= infoTop5) {
-                navAction($(".navItem:eq(4)"));
-            } else if (scrollN >= infoTop4) {
-                navAction($(".navItem:eq(3)"));
-            } else if (scrollN >= infoTop3) {
-                navAction($(".navItem:eq(2)"));
-            } else if (scrollN >= infoTop2) {
-                navAction($(".navItem:eq(1)"));
-            } else if (scrollN >= infoTop1) {
-                navAction($(".navItem:eq(0)"));
-            }
+//            if (scrollN >= infoTop7) {
+//                navAction($(".navItem:eq(6)"));
+//            } else if (scrollN >= infoTop6) {
+//                navAction($(".navItem:eq(5)"));
+//            } else if (scrollN >= infoTop5) {
+//                navAction($(".navItem:eq(4)"));
+//            } else if (scrollN >= infoTop4) {
+//                navAction($(".navItem:eq(3)"));
+//            } else if (scrollN >= infoTop3) {
+//                navAction($(".navItem:eq(2)"));
+//            } else if (scrollN >= infoTop2) {
+//                navAction($(".navItem:eq(1)"));
+//            } else if (scrollN >= infoTop1) {
+//                navAction($(".navItem:eq(0)"));
+//            }
         });
         //设置交流群颜色
         var aboutStyle = 1;
