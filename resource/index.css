@@ -107,11 +107,11 @@
     margin-bottom: 20px;
     text-align: center;
     color: white;
-    background-color: #0047ff;
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#0047ff),to(#2FB9FD));
-    background-image: -webkit-linear-gradient(top,#0047ff 0,#2FB9FD 100%);
-    background-image: -o-linear-gradient(top,#0047ff 0,#2FB9FD 100%);
-    background-image: linear-gradient(to bottom, #0047ff 0,#1C98FF 100%);
+    background-color: #1C98FF;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#1053A1),to(#2282C1));
+    background-image: -webkit-linear-gradient(top,#1053A1 0,#2282C1 100%);
+    background-image: -o-linear-gradient(top,#1053A1 0,#2282C1 100%);
+    background-image: linear-gradient(to bottom, #1053A1 0,#2282C1 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0047ff', endColorstr='#2FB9FD', GradientType=0);
 }
 .CMEUBOX .nameBox{
