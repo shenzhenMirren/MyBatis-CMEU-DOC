@@ -1,211 +1,265 @@
 /*通用样式*/
-*{
+* {
     margin: 0;
     padding: 0;
     border: 0;
     vertical-align: baseline;
-    font-family:sans-serif,"Arial","Microsoft YaHei","黑体","宋体";
- }
+    font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
 
-.navAction{
+.navAction {
     border-left: 15px solid #1c98ff !important;
 }
-.indent{
+
+.indent {
     text-indent: 35px;
 }
-.line{
+
+.line {
     margin: 20px 0px;
-    width:100%;
-    border-bottom:2px solid black;
+    width: 100%;
+    border-bottom: 2px solid black;
 }
-.redColor{
+
+.redColor {
     color: red;
 }
 
-.lineHeight{
+.lineHeight {
     line-height: 60px;
 }
-.center{
+
+.center {
     text-align: center;
 }
-.isCode{
+
+.isCode {
     font-size: 18px;
-    line-height:30px;
+    line-height: 30px;
     background-color: #f3f5f7;
     padding-left: 20px;
-    padding-top:20px;
-    padding-bottom:20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     font-family: "Microsoft YaHei";
     margin-bottom: 20px;
 }
-.annotation{
+
+.annotation {
     color: #008000;
 }
-.variable{
+
+.variable {
     color: #ff1038;
 }
-.ref{
+
+.ref {
     color: #ff9124;
 }
-.param{
+
+.param {
     color: #646464;
 }
-.value{
+
+.value {
     color: #2A00FF;
 }
-.oneTag{
+
+.oneTag {
     margin-left: 40px;
 }
-.twoTag{
+
+.twoTag {
     margin-left: 80px;
 }
-.menuBack{
- display:none;
+
+.menuBack {
+    display: none;
 }
+
 /*头部样式*/
-.header{
-    width:100%;
+.header {
+    width: 100%;
     height: 60px;
     background-color: white;
-    position:fixed;
+    position: fixed;
     z-index: 9;
     box-shadow: 0px 5px 5px #666;
 }
-.logos{
+
+.tools {
+    float: left;
+    line-height: 60px;
+    margin-left: 10%;
+    font-size: 24px;
+    color: #1C98FF;
+    text-decoration: none;
+}
+.tools:hover{
+    color: #23527C;
+}
+.toolsByPhone{
+    color: #1C98FF;
+    text-decoration: none;
+}
+
+.logos {
     height: 100%;
     width: 600px;
     margin: 0px auto;
     text-align: center;
 }
-.logos img{
+
+.logos img {
     margin-top: 3px;
 }
-.logos .logoName{
+
+.logos .logoName {
     position: relative;
     top: -10px;
     color: #1C98FF;
     font-size: 30px;
-    font-weight:bold;
+    font-weight: bold;
 }
-.logos .about{
+
+.logos .about {
     position: relative;
     top: -10px;
-    font-weight:bold;
+    font-weight: bold;
     color: #990099;
 }
-.menu{
+
+.menu {
     display: none;
 }
-.range{
+
+.range {
     height: 60px
 }
+
 /*工具介绍*/
-.aboutUs{
+.aboutUs {
     width: 100%;
     height: auto;
     padding: 30px 0px;
     margin-bottom: 20px;
     text-align: center;
     color: white;
-    background-color: #1C98FF;
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#1053A1),to(#2282C1));
-    background-image: -webkit-linear-gradient(top,#1053A1 0,#2282C1 100%);
-    background-image: -o-linear-gradient(top,#1053A1 0,#2282C1 100%);
-    background-image: linear-gradient(to bottom, #1053A1 0,#2282C1 100%);
+    background-color: #0769AD;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#1053A1), to(#2282C1));
+    background-image: -webkit-linear-gradient(top, #1053A1 0, #2282C1 100%);
+    background-image: -o-linear-gradient(top, #1053A1 0, #2282C1 100%);
+    background-image: linear-gradient(to bottom, #1053A1 0, #2282C1 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0047ff', endColorstr='#2FB9FD', GradientType=0);
 }
-.CMEUBOX .nameBox{
+
+.CMEUBOX .nameBox {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     padding: 10px 20px 16px;
     color: white;
 }
-.CMEUBOX .nameBox .name{
+
+.CMEUBOX .nameBox .name {
     font-size: 46px;
     font-weight: bolder;
 }
-.CMEUBOX .nameBox .version{
+
+.CMEUBOX .nameBox .version {
     padding-top: 15px;
     padding-left: 2px;;
 }
-.des{
+
+.des {
     font-size: 26px;
-    font-weight:bold;
+    font-weight: bold;
     padding-bottom: 20px;
-    padding-left:5%;
-    padding-right:5%;
+    padding-left: 5%;
+    padding-right: 5%;
 }
-.downBox{
+
+.downBox {
     margin-bottom: 10px;
 }
-.downLoad{
+
+.downLoad {
     color: white;
     font-size: 26px;
-    font-weight:bold;
+    font-weight: bold;
     display: inline-block;
-    padding:10px 15px;
+    padding: 10px 15px;
     border-radius: 8px;
     border: 2px solid white;
 }
-.downLoad:hover{
+
+.downLoad:hover {
     color: purple;
     border: 2px solid purple;
 }
 
 /*主体样式*/
-.contextBox{
-    width:100%;
+.contextBox {
+    width: 100%;
     /*height: 12000px;*/
 }
-.context{
+
+.context {
     width: 90%;
-    height:500px;
-    margin:0px auto;
+    height: 500px;
+    margin: 0px auto;
     position: relative;
 }
-.nav{
+
+.nav {
     position: absolute;
     width: 23%;
     height: 500px;
 }
-.docInfo{
+
+.docInfo {
     position: absolute;
-    width:77%;
+    width: 77%;
     height: 500px;
     left: 23%;
     font-size: 16px;
 }
-.docInfo ol{
+
+.docInfo ol {
     padding-left: 20px;
 }
-.docInfo ol li{
-    margin:5px 0px;
+
+.docInfo ol li {
+    margin: 5px 0px;
 }
-.docInfo h3{
+
+.docInfo h3 {
     margin-top: 20px;
 }
-.nav ul{
+
+.nav ul {
     position: absolute;
-    list-style-type:none;
-    width:90%;
+    list-style-type: none;
+    width: 90%;
 }
-.nav ul li{
+
+.nav ul li {
     margin-bottom: 10px;
     padding: 10px 10px 10px 0px;
     cursor: pointer;
     text-align: center;
     border-radius: 5px;
     border: 1px solid #1c98ff;
-    font-weight:bold;
+    font-weight: bold;
     color: #1c98ff;
 }
-.nav ul li:hover{
+
+.nav ul li:hover {
     border: 1px solid #1c98ff;
-    border-left:15px solid #1c98ff;
+    border-left: 15px solid #1c98ff;
     transition: border .3s;
 }
-.arrow{
+
+.arrow {
     float: left;
     width: 0;
     height: 0;

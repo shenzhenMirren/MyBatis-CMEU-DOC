@@ -20,6 +20,14 @@
 .redColor{
     color: red;
 }
+.tools{
+    display: none;
+}
+
+.toolsByPhone{
+    color: #1C98FF;
+    text-decoration: none;
+}
 
 .lineHeight{
     line-height: 60px;
